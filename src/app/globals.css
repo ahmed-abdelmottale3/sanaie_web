@@ -1,0 +1,327 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #2563eb; 
+  --on-primary: #ffffff;
+  --muted: #6b7280; 
+  --surface: #f8fafc;
+  --border: #e6eef8;
+  --success: #16a34a;
+  --error: #dc2626;
+  --radius: 10px;
+  --max-width: 880px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #020617;
+    --foreground: #e5e7eb;
+    --surface: #020617;
+    --border: #1e293b;
+    --muted: #94a3b8;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #dc2626, #b91c1c);
+  border-radius: 4px;
+  border: 1px solid #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #b91c1c, #991b1b);
+}
+
+::-webkit-scrollbar-corner {
+  background: #f1f5f9;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #dc2626 #f1f5f9;
+}
+
+/* Hide scrollbar on mobile for cleaner look */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(220, 38, 38, 0.6);
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(241, 245, 249, 0.3);
+  }
+}
+
+/* Custom scrollbar for specific components */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #dc2626 #f1f5f9;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #dc2626, #b91c1c);
+  border-radius: 3px;
+  border: 1px solid #f1f5f9;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #b91c1c, #991b1b);
+}
+
+/* Hide scrollbar arrows */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Smooth scrollbar animations */
+::-webkit-scrollbar-thumb {
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  transition: background 0.3s ease;
+}
+
+/* Custom scrollbar for modals and dropdowns */
+.modal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #dc2626 #f8fafc;
+}
+
+.modal-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-scrollbar::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-radius: 3px;
+}
+
+.modal-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #dc2626, #b91c1c);
+  border-radius: 3px;
+  border: 1px solid #f8fafc;
+}
+
+.modal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #b91c1c, #991b1b);
+}
+
+/* Thin scrollbar for cards and small containers */
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(220, 38, 38, 0.6) rgba(241, 245, 249, 0.3);
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.3);
+  border-radius: 2px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(220, 38, 38, 0.6);
+  border-radius: 2px;
+  border: 1px solid rgba(241, 245, 249, 0.3);
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(220, 38, 38, 0.8);
+}
+
+/* Horizontal scrollbar */
+.horizontal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #dc2626 #f1f5f9;
+}
+
+.horizontal-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: auto;
+}
+
+.horizontal-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.horizontal-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #dc2626, #b91c1c);
+  border-radius: 3px;
+  border: 1px solid #f1f5f9;
+}
+
+.horizontal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #b91c1c, #991b1b);
+}
+
+/* Auto-hide scrollbar */
+.auto-hide-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #dc2626 transparent;
+}
+
+.auto-hide-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.auto-hide-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.auto-hide-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #dc2626, #b91c1c);
+  border-radius: 3px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.auto-hide-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #b91c1c, #991b1b);
+  background-clip: padding-box;
+}
+
+/* Hide scrollbar on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(220, 38, 38, 0.3);
+  }
+}
+
+/* Page transition effects */
+.page-transition {
+  transform-origin: center;
+  will-change: transform, opacity, filter;
+}
+
+.page-transition-entering {
+  animation: pageSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.page-transition-exiting {
+  animation: pageSlideOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes pageSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.85) rotateY(20deg);
+    filter: blur(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateY(0deg);
+    filter: blur(0px);
+  }
+}
+
+@keyframes pageSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateY(0deg);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(1.15) rotateY(-20deg);
+    filter: blur(10px);
+  }
+}
+
+/* Swipe transition for mobile */
+.swipe-transition .page-transition {
+  animation-duration: 0.4s;
+}
+
+.swipe-transition .page-transition-entering {
+  animation-name: swipeSlideIn;
+}
+
+.swipe-transition .page-transition-exiting {
+  animation-name: swipeSlideOut;
+}
+
+@keyframes swipeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes swipeSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%) scale(0.9);
+  }
+}
+
+/* Loading animation improvements */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 0px, #e0e0e0 40px, #f0f0f0 80px);
+  background-size: 200px;
+  animation: shimmer 1.5s infinite linear;
+}
