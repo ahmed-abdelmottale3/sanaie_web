@@ -11,9 +11,11 @@ import ErrorMessage from "../../components/analytics/ErrorMessage";
 import BarChart from "../../components/analytics/charts/BarChart";
 import { Users, UserCheck, UserX, Trash2, Ban } from "lucide-react";
 import { motion } from "framer-motion";
+import { useI18n } from "../../i18n/I18nProvider";
 
 export default function CustomersPage() {
   const { data, loading, error, refetch } = useCustomerStatistics();
+  const { t } = useI18n();
 
   if (loading && !data) {
     return (
@@ -56,44 +58,41 @@ export default function CustomersPage() {
     <>
       <Header />
       <div className="min-h-screen bg-white">
-        <PageHero
-          title="Customer Statistics"
-          description="Comprehensive overview of our customer base and their activity on the platform"
-        />
+        <PageHero title={t("customers.title") as string} description={t("customers.description") as string} />
 
         <section className="py-12 bg-slate-50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
               <StatCard
-                title="Total Customers"
+                title={t("customers.stat_total") as string}
                 value={stats.total}
                 icon={Users}
                 iconColor="text-blue-600"
                 bgColor="bg-blue-50"
               />
               <StatCard
-                title="Active"
+                title={t("customers.stat_active") as string}
                 value={stats.active}
                 icon={UserCheck}
                 iconColor="text-green-600"
                 bgColor="bg-green-50"
               />
               <StatCard
-                title="Inactive"
+                title={t("customers.stat_inactive") as string}
                 value={stats.inactive}
                 icon={UserX}
                 iconColor="text-yellow-600"
                 bgColor="bg-yellow-50"
               />
               <StatCard
-                title="Deleted"
+                title={t("customers.stat_deleted") as string}
                 value={stats.deleted}
                 icon={Trash2}
                 iconColor="text-red-600"
                 bgColor="bg-red-50"
               />
               <StatCard
-                title="Blacklisted"
+                title={t("customers.stat_blacklisted") as string}
                 value={stats.blacklisted}
                 icon={Ban}
                 iconColor="text-orange-600"
@@ -103,26 +102,26 @@ export default function CustomersPage() {
 
             <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">Customer Status Distribution</h3>
+                <h3 className="mb-4 text-lg font-bold text-slate-900">{t("customers.status_distribution")}</h3>
                 <BarChart data={chartData} color="#dc2626" height={300} />
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">Key Metrics</h3>
+                <h3 className="mb-4 text-lg font-bold text-slate-900">{t("customers.key_metrics")}</h3>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">Active Rate</span>
+                    <span className="text-sm font-semibold text-slate-600">{t("customers.active_rate")}</span>
                     <span className="text-xl font-bold text-slate-900">
                       {stats.total > 0 ? ((stats.active / stats.total) * 100).toFixed(1) : 0}%
                     </span>
                   </div>
                   <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">Inactive Rate</span>
+                    <span className="text-sm font-semibold text-slate-600">{t("customers.inactive_rate")}</span>
                     <span className="text-xl font-bold text-slate-900">
                       {stats.total > 0 ? ((stats.inactive / stats.total) * 100).toFixed(1) : 0}%
                     </span>
                   </div>
                   <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">Blacklist Rate</span>
+                    <span className="text-sm font-semibold text-slate-600">{t("customers.blacklist_rate")}</span>
                     <span className="text-xl font-bold text-slate-900">
                       {stats.total > 0 ? ((stats.blacklisted / stats.total) * 100).toFixed(1) : 0}%
                     </span>

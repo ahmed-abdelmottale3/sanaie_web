@@ -112,4 +112,34 @@
     "title": "إعلاناتنا",
     "subtitle": "اكتشف أحدث العروض والمحتوى المميز"
   }
+  ,
+  "customers": {
+    "title": "إحصائيات العملاء",
+    "description": "نظرة شاملة على قاعدة عملائنا ونشاطهم على المنصة",
+    "stat_total": "إجمالي العملاء",
+    "stat_active": "نشط",
+    "stat_inactive": "غير نشط",
+    "stat_deleted": "محذوف",
+    "stat_blacklisted": "مدرجون في القائمة السوداء",
+    "status_distribution": "توزيع حالة العملاء",
+    "key_metrics": "المقاييس الرئيسية",
+    "active_rate": "نسبة النشطين",
+    "inactive_rate": "نسبة غير النشطين",
+    "blacklist_rate": "نسبة المدرجين في القائمة السوداء"
+  }
+  ,
+  "providers": {
+    "title": "إحصائيات المزودين",
+    "description": "رؤى مفصّلة حول مزودي الخدمة لدينا ومدى تفاعلهم على المنصة",
+    "stat_total": "إجمالي المزودين",
+    "stat_active": "نشط",
+    "stat_inactive": "غير نشط",
+    "stat_deleted": "محذوف",
+    "stat_blacklisted": "مدرجون في القائمة السوداء",
+    "status_distribution": "توزيع حالة المزودين",
+    "key_metrics": "المقاييس الرئيسية",
+    "active_rate": "نسبة النشطين",
+    "inactive_rate": "نسبة غير النشطين",
+    "blacklist_rate": "نسبة المدرجين في القائمة السوداء"
+  }
 }

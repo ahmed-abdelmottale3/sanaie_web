@@ -112,4 +112,34 @@
     "title": "Our Advertisements",
     "subtitle": "Discover our latest promotions and featured content"
   }
+  ,
+  "customers": {
+    "title": "Customer Statistics",
+    "description": "Comprehensive overview of our customer base and their activity on the platform",
+    "stat_total": "Total Customers",
+    "stat_active": "Active",
+    "stat_inactive": "Inactive",
+    "stat_deleted": "Deleted",
+    "stat_blacklisted": "Blacklisted",
+    "status_distribution": "Customer Status Distribution",
+    "key_metrics": "Key Metrics",
+    "active_rate": "Active Rate",
+    "inactive_rate": "Inactive Rate",
+    "blacklist_rate": "Blacklist Rate"
+  }
+  ,
+  "providers": {
+    "title": "Provider Statistics",
+    "description": "Detailed insights into our service providers and their engagement on the platform",
+    "stat_total": "Total Providers",
+    "stat_active": "Active",
+    "stat_inactive": "Inactive",
+    "stat_deleted": "Deleted",
+    "stat_blacklisted": "Blacklisted",
+    "status_distribution": "Provider Status Distribution",
+    "key_metrics": "Key Metrics",
+    "active_rate": "Active Rate",
+    "inactive_rate": "Inactive Rate",
+    "blacklist_rate": "Blacklist Rate"
+  }
 }
