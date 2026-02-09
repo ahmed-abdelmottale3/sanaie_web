@@ -9,6 +9,7 @@ import AdsCarousel from "../components/landing/AdsCarousel";
 import FAQSection from "../components/landing/FAQSection";
 import MobileAppSection from "../components/landing/MobileAppSection";
 import CTASection from "../components/landing/CTASection";
+import ContactSection from "../components/landing/ContactSection";
 import Footer from "../components/landing/Footer";
 import LoadingSpinner from "../components/analytics/LoadingSpinner";
 import ErrorMessage from "../components/analytics/ErrorMessage";
@@ -54,6 +55,9 @@ export default function HomePage() {
           <CTASection />
         </>
       )}
+
+      {/* Contact section */}
+      <ContactSection />
 
       <Footer />
     </>

@@ -98,6 +98,21 @@
     "get_started": "Get Started",
     "view_statistics": "View Statistics"
   },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Have questions or need assistance? We're here to help! Choose your preferred method to contact us.",
+    "choose_method": "Choose your preferred contact method:",
+    "email_title": "Email Us",
+    "email_desc": "Send us an email and we'll respond within 24 hours",
+    "email_address": "Email Address:",
+    "send_email": "Send Email",
+    "phone_title": "Call Us",
+    "phone_desc": "Speak directly with our team during business hours",
+    "phone_number": "Phone Number:",
+    "call_now": "Call Now",
+    "copy": "Copy",
+    "visit_us": "Visit Our Office"
+  },
   "footer": {
     "tagline": "Connecting customers with trusted service providers.",
     "platform": "Platform",
@@ -110,7 +125,11 @@
     "legal": "Legal",
     "privacy_policy": "Privacy Policy",
     "terms_of_service": "Terms of Service",
-    "copyright": "All rights reserved."
+    "copyright": "All rights reserved.",
+    "contact_us": "Contact Us",
+    "email": "info@afaq-global.com",
+    "phone": "01111194176",
+    "address": "Royal Valley Mall, Unit C/4, 1st Floor, Office 11, Hadayek October, Giza, Egypt"
   },
   "ads": {
     "title": "Our Advertisements",
