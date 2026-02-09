@@ -9,6 +9,9 @@
     "ads": "Ads",
     "more": "More"
   },
+  "header": {
+    "platform_name": "Sanaie Platform"
+  },
   "faq": {
     "title": "Frequently Asked Questions",
     "subtitle": "Answers to the most common questions about our platform",
@@ -46,6 +49,7 @@
       "Request multiple quotes and compare offers",
       "App-only promotions and local discounts"
     ],
+    "get_on": "GET IT ON",
     "get_on_play": "Google Play"
   },
   "hero": {
@@ -177,5 +181,66 @@
     "available": "Available",
     "unavailable": "Unavailable",
     "currency": "SAR"
+  },
+  "services": {
+    "title": "Service Statistics",
+    "description": "Track the availability and performance of services offered on our platform",
+    "stat_total": "Total Services",
+    "stat_available": "Available",
+    "stat_unavailable": "Unavailable",
+    "stat_availability_rate": "Availability Rate",
+    "chart_title": "Service Availability",
+    "metrics_title": "Service Metrics",
+    "metric_total": "Total Services",
+    "metric_available": "Available Services",
+    "metric_unavailable": "Unavailable Services",
+    "metric_availability_rate": "Availability Rate",
+    "chart_available": "Available",
+    "chart_unavailable": "Unavailable"
+  },
+  "ads": {
+    "title": "Advertisement Statistics",
+    "description": "Track ad performance, engagement rates, and campaign effectiveness",
+    "stat_total": "Total Ads",
+    "stat_active": "Active",
+    "stat_inactive": "Inactive",
+    "stat_total_views": "Total Views",
+    "stat_total_clicks": "Total Clicks",
+    "stat_avg_views": "Avg Views",
+    "chart_title": "Ad Status Distribution",
+    "engagement_title": "Engagement Metrics",
+    "metric_avg_clicks": "Average Clicks per Ad",
+    "metric_avg_views": "Average Views per Ad",
+    "metric_ctr": "Click-Through Rate (CTR)",
+    "metric_total_engagement": "Total Engagement",
+    "all_ads_title": "All Advertisements",
+    "no_ads_found": "No ads found",
+    "active": "Active",
+    "inactive": "Inactive",
+    "target": "Target",
+    "views": "views",
+    "clicks": "clicks",
+    "chart_active": "Active",
+    "chart_inactive": "Inactive"
+  },
+  "requests": {
+    "title": "Request Statistics",
+    "description": "Monitor request status, completion rates, and customer satisfaction metrics",
+    "stat_total": "Total Requests",
+    "stat_pending": "Pending",
+    "stat_approved": "Approved",
+    "stat_rejected": "Rejected",
+    "stat_completed": "Completed",
+    "stat_avg_rating": "Average Rating",
+    "chart_title": "Request Status Distribution",
+    "performance_title": "Performance Metrics",
+    "metric_completion_rate": "Completion Rate",
+    "metric_avg_rating": "Average Rating",
+    "metric_approval_rate": "Approval Rate",
+    "metric_rejection_rate": "Rejection Rate",
+    "chart_pending": "Pending",
+    "chart_approved": "Approved",
+    "chart_rejected": "Rejected",
+    "chart_completed": "Completed"
   }
 }

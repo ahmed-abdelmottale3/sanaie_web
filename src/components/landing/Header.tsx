@@ -66,13 +66,13 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <RippleLink href="/" className="flex items-center gap-2">
+            <RippleLink href="/" className="flex items-center gap-2">
             <img
               src="/logo.png"
               alt="Sanaie Platform Logo"
               className="h-8 w-auto rounded-full"
               />
-            <span className="text-lg font-bold text-slate-900">Sanaie Platform</span>
+            <span className="text-lg font-bold text-slate-900">{t('header.platform_name')}</span>
           </RippleLink>
           
           {/* Desktop Navigation */}
