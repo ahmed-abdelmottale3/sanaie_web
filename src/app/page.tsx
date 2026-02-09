@@ -7,6 +7,7 @@ import StatsSection from "../components/landing/StatsSection";
 import FeaturesSection from "../components/landing/FeaturesSection";
 import AdsCarousel from "../components/landing/AdsCarousel";
 import FAQSection from "../components/landing/FAQSection";
+import MobileAppSection from "../components/landing/MobileAppSection";
 import CTASection from "../components/landing/CTASection";
 import Footer from "../components/landing/Footer";
 import LoadingSpinner from "../components/analytics/LoadingSpinner";
@@ -44,6 +45,7 @@ export default function HomePage() {
       {/* Static sections - always visible regardless of data state */}
       <FeaturesSection />
       <AdsCarousel />
+      <MobileAppSection />
       <FAQSection />
 
       {/* Call-to-action section requiring stats data */}

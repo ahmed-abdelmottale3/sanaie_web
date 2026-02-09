@@ -6,11 +6,14 @@ import { BarChart3, Users, Briefcase, ShoppingBag, FileText, Megaphone, FolderTr
 import { motion, AnimatePresence } from "framer-motion";
 import RippleLink from "../ui/RippleLink";
 
-const navItems = [
+const primaryNav = [
   { href: "/", label: "Home", icon: Home },
   { href: "/customers", label: "Customers", icon: Users },
   { href: "/providers", label: "Providers", icon: Briefcase },
   { href: "/categories", label: "Categories", icon: FolderTree },
+];
+
+const moreNav = [
   { href: "/services", label: "Services", icon: ShoppingBag },
   { href: "/requests", label: "Requests", icon: FileText },
   { href: "/ads", label: "Ads", icon: Megaphone },
@@ -19,7 +22,10 @@ const navItems = [
 export default function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const [isMobileMoreOpen, setIsMobileMoreOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const moreRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -29,6 +35,9 @@ export default function Header() {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsMobileMenuOpen(false);
+      }
+      if (moreRef.current && !moreRef.current.contains(event.target as Node)) {
+        setIsMoreOpen(false);
       }
     };
 
@@ -56,7 +65,7 @@ export default function Header() {
           
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
-            {navItems.map((item) => {
+            {primaryNav.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
               return (
@@ -74,6 +83,50 @@ export default function Header() {
                 </RippleLink>
               );
             })}
+
+            {/* More dropdown */}
+            <div className="relative" ref={moreRef}>
+              <button
+                onClick={() => setIsMoreOpen((s) => !s)}
+                className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-slate-600 hover:bg-slate-100 hover:text-slate-900`}
+                aria-expanded={isMoreOpen}
+              >
+                <ChevronDown className="h-4 w-4" />
+                <span>More</span>
+              </button>
+
+              <AnimatePresence>
+                {isMoreOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.18 }}
+                    className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-slate-200 py-2 z-50 overflow-hidden"
+                  >
+                    {moreNav.map((item) => {
+                      const Icon = item.icon;
+                      const isActive = pathname === item.href;
+                      return (
+                        <RippleLink
+                          key={item.href}
+                          href={item.href}
+                          className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors ${
+                            isActive
+                              ? "bg-red-50 text-red-600 border-r-2 border-red-600"
+                              : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                          }`}
+                          onClick={() => setIsMoreOpen(false)}
+                        >
+                          <Icon className={`h-4 w-4 ${isActive ? "text-red-600" : ""}`} />
+                          <span>{item.label}</span>
+                        </RippleLink>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -101,7 +154,7 @@ export default function Header() {
                   className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-slate-200 py-2 z-50 modal-scrollbar max-h-64 overflow-y-auto"
                 >
                   <nav className="flex flex-col">
-                    {navItems.map((item) => {
+                    {primaryNav.map((item) => {
                       const Icon = item.icon;
                       const isActive = pathname === item.href;
                       return (
@@ -120,6 +173,52 @@ export default function Header() {
                         </RippleLink>
                       );
                     })}
+
+                    {/* Mobile 'More' collapsible */}
+                    <div className="border-t border-slate-100 mt-2 pt-2">
+                      <button
+                        onClick={() => setIsMobileMoreOpen((s) => !s)}
+                        className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                      >
+                        <span className="flex items-center gap-3">
+                          <ChevronDown className="h-4 w-4 rotate-90" />
+                          More
+                        </span>
+                        <span className="text-slate-500">{isMobileMoreOpen ? "Hide" : "Show"}</span>
+                      </button>
+
+                      <AnimatePresence>
+                        {isMobileMoreOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.18 }}
+                            className="mt-1 overflow-hidden"
+                          >
+                            {moreNav.map((item) => {
+                              const Icon = item.icon;
+                              const isActive = pathname === item.href;
+                              return (
+                                <RippleLink
+                                  key={item.href}
+                                  href={item.href}
+                                  className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors ${
+                                    isActive
+                                      ? "bg-red-50 text-red-600 border-r-2 border-red-600"
+                                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                                  }`}
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                  <Icon className={`h-4 w-4 ${isActive ? "text-red-600" : ""}`} />
+                                  <span>{item.label}</span>
+                                </RippleLink>
+                              );
+                            })}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </nav>
                 </motion.div>
               )}
