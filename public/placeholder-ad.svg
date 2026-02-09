@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#e2e8f0" />
+      <stop offset="1" stop-color="#cbd5e1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)" />
+  <g fill="#475569" font-family="Inter, Arial, Helvetica, sans-serif">
+    <text x="50%" y="45%" text-anchor="middle" font-size="48" font-weight="700">No Image Available</text>
+    <text x="50%" y="58%" text-anchor="middle" font-size="28">Sanaie Advertisement</text>
+  </g>
+</svg>

@@ -2,49 +2,60 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import LoadMoreButton from "../ui/LoadMoreButton";
 
 const faqs = [
   {
-    question: "How can I register on the platform?",
-    answer: "You can register easily by clicking the 'Join Us' button at the top of the page. You'll need to enter your phone number and basic information, and your account will be activated within minutes."
+    question: "What is Sanaie and how does it work?",
+    answer: "Sanaie is a local services marketplace that connects customers with verified service providers. Search by category or use the request page to get quotes, then book and pay securely through the platform."
   },
   {
-    question: "Are the platform's services safe and guaranteed?",
-    answer: "Yes, all services on our platform are guaranteed. We verify the identity of service providers and provide warranties on all work. You can also read reviews from previous customers before booking."
+    question: "How do I find and book a service?",
+    answer: "Browse categories or use the search bar to find services. Open a provider's profile to view ratings, past work, and prices, then choose a time and confirm the booking from the service page."
   },
   {
-    question: "What payment methods are available?",
-    answer: "We offer several secure payment methods including: credit cards, bank transfers, cash on delivery, and electronic wallets. All transactions are protected by advanced encryption systems."
+    question: "How are service providers verified?",
+    answer: "Providers go through identity and document verification before offering services. We also collect customer reviews and ratings to maintain quality and trust on the platform."
   },
   {
-    question: "How can I rate a service provider?",
-    answer: "After the service is completed, you'll receive a text message or notification in the app to rate the service. You can add a comment and rate from 1-5 stars."
+    question: "Which payment methods are supported?",
+    answer: "We support secure online payments (credit/debit cards and local wallets) and may offer cash-on-delivery where applicable. All card payments are processed over encrypted connections."
   },
   {
-    question: "Can I cancel my booking?",
-    answer: "Yes, you can cancel your booking for free up to 24 hours before the service time. If canceled after that, a small cancellation fee may apply."
+    question: "What is the cancellation and refund policy?",
+    answer: "When you cancel an order, you can get a refund and keep it as credit in the app."
   },
   {
-    question: "How can I become a service provider on the platform?",
-    answer: "You can register as a service provider by selecting 'Join as Service Provider' during registration. You'll need to submit your ID documents and professional certificates for verification."
+    question: "How can I become a service provider on Sanaie?",
+    answer: "Sign up as a provider from the 'Join as Service Provider' link, submit required documents, and complete the onboarding steps. Once verified, you can publish services and receive bookings."
   },
   {
-    question: "Is the platform available in all cities?",
-    answer: "Yes, our platform covers all major cities and areas in the Kingdom. If your area is not covered, you can contact us to add your area."
+    question: "How do I advertise or promote my service on the site?",
+    answer: "Advertisers can create promotional ads via the Ads section. Contact our sales team or use the dashboard (if available) to set up campaigns and target your audience."
   },
   {
-    question: "What is the refund policy?",
-    answer: "If you're not satisfied with the service, you can request a full or partial refund within 48 hours of service completion. We'll review your request and respond within 24 hours."
+    question: "Is Sanaie available in my city?",
+    answer: "Sanaie currently operates in major cities across Egypt."
+  },
+  {
+    question: "How can I contact customer support?",
+    answer: "Use the support/contact page, email us, or call the helpline listed in the footer. Provide booking or account details so we can help quickly."
   }
 ];
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const PAGE_SIZE = 4;
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  const visibleFaqs = faqs.slice(0, visibleCount);
+  const hasMore = visibleCount < faqs.length;
+  const loadMore = () => setVisibleCount((c) => Math.min(c + PAGE_SIZE, faqs.length));
 
   return (
     <section className="py-20 bg-white">
@@ -77,7 +88,7 @@ export default function FAQSection() {
         </motion.div>
 
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
+          {visibleFaqs.map((faq, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -102,7 +113,7 @@ export default function FAQSection() {
               </button>
 
               <AnimatePresence>
-                {openIndex === index && (
+                  {openIndex === index && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
@@ -118,6 +129,24 @@ export default function FAQSection() {
               </AnimatePresence>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-6">
+          {hasMore && (
+            <LoadMoreButton onClick={loadMore} label="Show more FAQs" />
+          )}
+
+          {!hasMore && visibleCount > PAGE_SIZE && (
+            <div className="mt-3">
+              <LoadMoreButton
+                onClick={() => {
+                  setVisibleCount(PAGE_SIZE);
+                  setOpenIndex(null);
+                }}
+                label="Show less"
+              />
+            </div>
+          )}
         </div>
 
       </div>

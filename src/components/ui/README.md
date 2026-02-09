@@ -60,6 +60,16 @@ import CustomScrollbar from '../components/ui/CustomScrollbar';
 </CustomScrollbar>
 ```
 
+### `LoadMoreButton`
+
+Simple reusable button for paginated lists.
+
+```tsx
+import LoadMoreButton from '../components/ui/LoadMoreButton';
+
+<LoadMoreButton onClick={loadMore} isLoading={loadingMore} />
+```
+
 ## CSS Customization
 
 The scrollbar styles are defined in `src/app/globals.css` and can be customized by modifying the CSS variables:

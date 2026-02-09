@@ -134,7 +134,7 @@ export default function AdsCarousel() {
                       alt={currentAd.title}
                       className="w-full h-full object-cover"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = '/placeholder-ad.png';
+                        (e.target as HTMLImageElement).src = '/placeholder-ad.svg';
                       }}
                     />
                   ) : (
