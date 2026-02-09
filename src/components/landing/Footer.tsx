@@ -1,10 +1,20 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useI18n } from "../../i18n/I18nProvider";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   const { t } = useI18n();
+  const [showPrivacy, setShowPrivacy] = useState(false);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowPrivacy(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <footer className="border-t border-slate-200 bg-white">
@@ -48,18 +58,16 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 mb-4">{t("footer.resources")}</h3>
-            <ul className="space-y-2 text-sm text-slate-600">
-              <li><a href="/documentation" className="hover:text-slate-900 transition-colors">{t("footer.documentation")}</a></li>
-              <li><a href="/support" className="hover:text-slate-900 transition-colors">{t("footer.support")}</a></li>
-              <li><a href="/contact" className="hover:text-slate-900 transition-colors">{t("footer.contact")}</a></li>
-            </ul>
-          </div>
-          <div>
             <h3 className="text-sm font-semibold text-slate-900 mb-4">{t("footer.legal")}</h3>
             <ul className="space-y-2 text-sm text-slate-600">
-              <li><a href="/privacy-policy" className="hover:text-slate-900 transition-colors">{t("footer.privacy_policy")}</a></li>
-              <li><a href="/terms-of-service" className="hover:text-slate-900 transition-colors">{t("footer.terms_of_service")}</a></li>
+              <li>
+                <button
+                  onClick={() => setShowPrivacy(true)}
+                  className="text-slate-600 hover:text-slate-900 transition-colors"
+                >
+                  {t("footer.privacy_policy")}
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -67,6 +75,44 @@ export default function Footer() {
           <p>&copy; {new Date().getFullYear()} Sanaie Platform. {t("footer.copyright")}</p>
         </div>
       </div>
+      {showPrivacy && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setShowPrivacy(false)}
+          />
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={t("footer.privacy_policy") as string}
+            className="relative max-w-3xl w-full mx-4 bg-white rounded-lg shadow-lg overflow-auto max-h-[80vh] p-6"
+          >
+            <button
+              onClick={() => setShowPrivacy(false)}
+              className="absolute top-3 right-3 text-slate-600 hover:text-slate-900"
+              aria-label="Close"
+            >
+              Close
+            </button>
+            <div className="prose prose-sm text-slate-700">
+              {(() => {
+                const getString = (v: string | string[]) =>
+                  Array.isArray(v) ? v.join("\n\n") : v;
+                const title = getString(t("footer.privacy_title"));
+                const content = getString(t("footer.privacy_content"));
+                return (
+                  <>
+                    <h2>{title}</h2>
+                    {content.split("\n\n").map((para, i) => (
+                      <p key={i}>{para}</p>
+                    ))}
+                  </>
+                );
+              })()}
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }
