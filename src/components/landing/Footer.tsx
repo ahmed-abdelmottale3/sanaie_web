@@ -50,16 +50,16 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-slate-900 mb-4">{t("footer.resources")}</h3>
             <ul className="space-y-2 text-sm text-slate-600">
-              <li><a href="#" className="hover:text-slate-900">{t("footer.documentation")}</a></li>
-              <li><a href="#" className="hover:text-slate-900">{t("footer.support")}</a></li>
-              <li><a href="#" className="hover:text-slate-900">{t("footer.contact")}</a></li>
+              <li><a href="/documentation" className="hover:text-slate-900 transition-colors">{t("footer.documentation")}</a></li>
+              <li><a href="/support" className="hover:text-slate-900 transition-colors">{t("footer.support")}</a></li>
+              <li><a href="/contact" className="hover:text-slate-900 transition-colors">{t("footer.contact")}</a></li>
             </ul>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-slate-900 mb-4">{t("footer.legal")}</h3>
             <ul className="space-y-2 text-sm text-slate-600">
-              <li><a href="#" className="hover:text-slate-900">{t("footer.privacy_policy")}</a></li>
-              <li><a href="#" className="hover:text-slate-900">{t("footer.terms_of_service")}</a></li>
+              <li><a href="/privacy-policy" className="hover:text-slate-900 transition-colors">{t("footer.privacy_policy")}</a></li>
+              <li><a href="/terms-of-service" className="hover:text-slate-900 transition-colors">{t("footer.terms_of_service")}</a></li>
             </ul>
           </div>
         </div>

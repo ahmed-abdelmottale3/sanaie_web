@@ -133,11 +133,6 @@
     "phone": "01111194176",
     "address": "Royal Valley Mall, Unit C/4, 1st Floor, Office 11, Hadayek October, Giza, Egypt"
   },
-  "ads": {
-    "title": "Our Advertisements",
-    "subtitle": "Discover our latest promotions and featured content"
-  }
-  ,
   "customers": {
     "title": "Customer Statistics",
     "description": "Comprehensive overview of our customer base and their activity on the platform",
@@ -221,6 +216,7 @@
   },
   "ads": {
     "title": "Advertisement Statistics",
+    "subtitle": "Discover our latest promotions and featured content",
     "description": "Track ad performance, engagement rates, and campaign effectiveness",
     "stat_total": "Total Ads",
     "stat_active": "Active",
