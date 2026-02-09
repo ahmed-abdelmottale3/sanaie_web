@@ -12,8 +12,10 @@ import LoadingSpinner from "../../components/analytics/LoadingSpinner";
 import ErrorMessage from "../../components/analytics/ErrorMessage";
 import { FolderTree, TrendingUp, TrendingDown, ChevronRight, X, Package, MousePointer } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useI18n } from "../../i18n/I18nProvider";
 
 export default function CategoriesPage() {
+  const { t } = useI18n();
   const [showCategories, setShowCategories] = useState(false);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
   const { data, loading, error, refetch } = useCategoryStatistics();
@@ -54,10 +56,7 @@ export default function CategoriesPage() {
     <>
       <Header />
       <div className="min-h-screen bg-white">
-        <PageHero
-          title="Category Statistics"
-          description="Analyze service distribution across different categories and their performance metrics"
-        />
+        <PageHero title={t("categories.title") as string} description={t("categories.description") as string} />
 
         <section className="py-12 bg-slate-50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -65,10 +64,10 @@ export default function CategoriesPage() {
               <div
                 onClick={() => setShowCategories(!showCategories)}
                 className="cursor-pointer transform transition-all hover:scale-105 hover:shadow-lg relative group ring-2 ring-transparent hover:ring-red-200 hover:ring-opacity-50 rounded-xl"
-                title="Click to view all categories and explore services"
+                title={t("categories.click_view_services") as string}
               >
                 <StatCard
-                  title="Total Categories"
+                  title={t("categories.stat_total") as string}
                   value={stats.total}
                   icon={FolderTree}
                   iconColor="text-indigo-600"
@@ -76,7 +75,7 @@ export default function CategoriesPage() {
                 />
                 <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-red-600 text-white text-xs px-3 py-1 rounded-full whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center gap-1 animate-pulse">
                   <MousePointer className="h-3 w-3" />
-                  <span>Click to explore all categories</span>
+                  <span>{t("categories.click_explore")}</span>
                 </div>
                 <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center gap-1">
                   <MousePointer className="h-3 w-3" />
@@ -84,21 +83,21 @@ export default function CategoriesPage() {
                 </div>
               </div>
               <StatCard
-                title="Avg Services per Category"
+                title={t("categories.stat_avg_services") as string}
                 value={stats.averageServicesPerCategory}
                 icon={TrendingUp}
                 iconColor="text-green-600"
                 bgColor="bg-green-50"
               />
               <StatCard
-                title="Max Services (Category)"
+                title={t("categories.stat_max_services") as string}
                 value={stats.maxServicesInCategory}
                 icon={TrendingUp}
                 iconColor="text-blue-600"
                 bgColor="bg-blue-50"
               />
               <StatCard
-                title="Min Services (Category)"
+                title={t("categories.stat_min_services") as string}
                 value={stats.minServicesInCategory}
                 icon={TrendingDown}
                 iconColor="text-orange-600"
@@ -108,20 +107,20 @@ export default function CategoriesPage() {
 
             <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">Category Overview</h3>
+                <h3 className="mb-4 text-lg font-bold text-slate-900">{t("categories.overview_title")}</h3>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">Total Categories</span>
+                    <span className="text-sm font-semibold text-slate-600">{t("categories.total_categories")}</span>
                     <span className="text-xl font-bold text-slate-900">{stats.total}</span>
                   </div>
                   <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">Average Services per Category</span>
+                    <span className="text-sm font-semibold text-slate-600">{t("categories.avg_services_per_category")}</span>
                     <span className="text-xl font-bold text-slate-900">
                       {stats.averageServicesPerCategory.toFixed(1)}
                     </span>
                   </div>
                   <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">Service Range</span>
+                    <span className="text-sm font-semibold text-slate-600">{t("categories.service_range")}</span>
                     <span className="text-sm font-bold text-slate-900">
                       {stats.minServicesInCategory} - {stats.maxServicesInCategory}
                     </span>
@@ -129,20 +128,21 @@ export default function CategoriesPage() {
                 </div>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">Distribution Analysis</h3>
+                <h3 className="mb-4 text-lg font-bold text-slate-900">{t("categories.distribution_title")}</h3>
                 <div className="space-y-4">
                   <div className="rounded-lg bg-slate-50 p-4">
-                    <p className="text-sm font-semibold text-slate-600 mb-2">Category Diversity</p>
+                    <p className="text-sm font-semibold text-slate-600 mb-2">{t("categories.category_diversity")}</p>
                     <p className="text-sm text-slate-600">
-                      Our platform offers services across {stats.total} different categories, 
-                      providing a wide range of options for customers.
+                      {(t("categories.diversity_desc") as string).replace('{total}', stats.total.toString())}
                     </p>
                   </div>
                   <div className="rounded-lg bg-slate-50 p-4">
-                    <p className="text-sm font-semibold text-slate-600 mb-2">Service Distribution</p>
+                    <p className="text-sm font-semibold text-slate-600 mb-2">{t("categories.service_distribution")}</p>
                     <p className="text-sm text-slate-600">
-                      Categories range from {stats.minServicesInCategory} to {stats.maxServicesInCategory} services, 
-                      with an average of {stats.averageServicesPerCategory.toFixed(1)} services per category.
+                      {(t("categories.distribution_desc") as string)
+                        .replace('{min}', stats.minServicesInCategory.toString())
+                        .replace('{max}', stats.maxServicesInCategory.toString())
+                        .replace('{avg}', stats.averageServicesPerCategory.toFixed(1))}
                     </p>
                   </div>
                 </div>
@@ -162,21 +162,21 @@ export default function CategoriesPage() {
                   <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                     <div className="mb-6">
                       <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-2xl font-extrabold text-slate-900">All Categories</h2>
+                        <h2 className="text-2xl font-extrabold text-slate-900">{t("categories.all_categories")}</h2>
                         <button
                           onClick={() => {
                             setShowCategories(false);
                             setSelectedCategoryId(null);
                           }}
                           className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                          aria-label="Close categories"
+                          aria-label={t("categories.close_categories") as string}
                         >
                           <X className="h-5 w-5 text-slate-600" />
                         </button>
                       </div>
                       <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
                         <MousePointer className="h-4 w-4" />
-                        <span>Interactive: Click any category to view its services</span>
+                        <span>{t("categories.interactive_hint")}</span>
                       </div>
                     </div>
 
@@ -197,7 +197,7 @@ export default function CategoriesPage() {
                         {categories.length === 0 ? (
                           <div className="text-center py-12">
                             <FolderTree className="mx-auto h-12 w-12 text-slate-400 mb-4" />
-                            <p className="text-lg font-semibold text-slate-600">No categories found</p>
+                            <p className="text-lg font-semibold text-slate-600">{t("categories.no_categories_found")}</p>
                           </div>
                         ) : (
                           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -217,7 +217,7 @@ export default function CategoriesPage() {
                                       ? 'border-red-600 bg-red-50 shadow-lg'
                                       : 'border-slate-200 bg-white hover:border-red-300 hover:bg-red-50 hover:shadow-md'
                                   }`}
-                                  title={isSelected ? 'Click to deselect and hide services' : 'Click to view services in this category'}
+                                  title={isSelected ? (t("categories.click_deselect") as string) : (t("categories.click_view_services") as string)}
                                 >
                                   <div className="flex items-start justify-between">
                                     <div className="flex-1">
@@ -227,7 +227,7 @@ export default function CategoriesPage() {
                                         </h3>
                                         <div className="flex items-center gap-1 text-xs text-red-600 font-medium">
                                           <MousePointer className="h-3 w-3" />
-                                          <span>{isSelected ? 'Selected' : 'Click'}</span>
+                                          <span>{isSelected ? t("categories.selected") : t("categories.click")}</span>
                                         </div>
                                       </div>
                                       {category.description && (
@@ -250,7 +250,7 @@ export default function CategoriesPage() {
                                         </div>
                                       )}
                                       <div className="mt-3 flex items-center justify-between text-xs text-slate-500">
-                                        <span>Click to view services</span>
+                                        <span>{t("categories.click_to_view")}</span>
                                         <ChevronRight
                                           className={`h-4 w-4 transition-transform ${
                                             isSelected ? 'rotate-90 text-red-600' : ''
@@ -284,12 +284,12 @@ export default function CategoriesPage() {
                   <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                     <div className="flex items-center justify-between mb-6">
                       <h2 className="text-2xl font-extrabold text-slate-900">
-                        Services in {categories?.find(c => c._id === selectedCategoryId)?.categoryNameEnglish || 'Category'}
+                        {t("categories.services_in")} {categories?.find(c => c._id === selectedCategoryId)?.categoryNameEnglish || t("categories.category")}
                       </h2>
                       <button
                         onClick={() => setSelectedCategoryId(null)}
                         className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                        aria-label="Close services"
+                        aria-label={t("categories.close_services") as string}
                       >
                         <X className="h-5 w-5 text-slate-600" />
                       </button>
@@ -312,7 +312,7 @@ export default function CategoriesPage() {
                         {services.length === 0 ? (
                           <div className="text-center py-12">
                             <Package className="mx-auto h-12 w-12 text-slate-400 mb-4" />
-                            <p className="text-lg font-semibold text-slate-600">No services found in this category</p>
+                            <p className="text-lg font-semibold text-slate-600">{t("categories.no_services_found")}</p>
                           </div>
                         ) : (
                           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -358,10 +358,10 @@ export default function CategoriesPage() {
                                       <div className="text-sm font-semibold text-slate-900">
                                         {service.priceRange?.from && service.priceRange?.to ? (
                                           <span>
-                                            {service.priceRange.from.toLocaleString()} - {service.priceRange.to.toLocaleString()} SAR
+                                            {t("categories.price_range").replace("{from}", service.priceRange.from.toLocaleString()).replace("{to}", service.priceRange.to.toLocaleString())}
                                           </span>
                                         ) : (
-                                          <span className="text-slate-500">Price not available</span>
+                                          <span className="text-slate-500">{t("categories.price_not_available")}</span>
                                         )}
                                       </div>
                                       <div className={`px-2 py-1 rounded-full text-xs font-semibold ${
@@ -369,7 +369,7 @@ export default function CategoriesPage() {
                                           ? 'bg-green-100 text-green-700'
                                           : 'bg-red-100 text-red-700'
                                       }`}>
-                                        {service.availability ? 'Available' : 'Unavailable'}
+                                        {service.availability ? t("categories.available") : t("categories.unavailable")}
                                       </div>
                                     </div>
                                   </div>
