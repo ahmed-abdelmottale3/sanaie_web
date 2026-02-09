@@ -1,30 +1,31 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useI18n } from "../../i18n/I18nProvider";
 import { usePathname } from "next/navigation";
 import { BarChart3, Users, Briefcase, ShoppingBag, FileText, Megaphone, FolderTree, Menu, X, ChevronDown, Home, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import RippleLink from "../ui/RippleLink";
 
 const primaryNav = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/customers", label: "Customers", icon: Users },
-  { href: "/providers", label: "Providers", icon: Briefcase },
-  { href: "/categories", label: "Categories", icon: FolderTree },
+  { href: "/", key: "home", icon: Home },
+  { href: "/customers", key: "customers", icon: Users },
+  { href: "/providers", key: "providers", icon: Briefcase },
+  { href: "/categories", key: "categories", icon: FolderTree },
 ];
 
 const moreNav = [
-  { href: "/services", label: "Services", icon: ShoppingBag },
-  { href: "/requests", label: "Requests", icon: FileText },
-  { href: "/ads", label: "Ads", icon: Megaphone },
+  { href: "/services", key: "services", icon: ShoppingBag },
+  { href: "/requests", key: "requests", icon: FileText },
+  { href: "/ads", key: "ads", icon: Megaphone },
 ];
 
 export default function Header() {
+  const { locale, setLocale, t } = useI18n();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [isMobileMoreOpen, setIsMobileMoreOpen] = useState(false);
-  const [lang, setLang] = useState<"en" | "ar">("en");
   const [isLangOpen, setIsLangOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const moreRef = useRef<HTMLDivElement>(null);
@@ -56,18 +57,8 @@ export default function Header() {
     };
   }, [isMobileMenuOpen]);
 
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("sanaie_lang");
-      if (saved === "en" || saved === "ar") setLang(saved);
-    } catch (e) {}
-  }, []);
-
   const setLanguage = (next: "en" | "ar") => {
-    setLang(next);
-    try {
-      localStorage.setItem("sanaie_lang", next);
-    } catch (e) {}
+    setLocale(next);
     setIsLangOpen(false);
   };
 
@@ -100,7 +91,7 @@ export default function Header() {
                   }`}
                 >
                   <Icon className="h-4 w-4" />
-                  <span>{item.label}</span>
+                  <span>{t(`nav.${item.key}`)}</span>
                 </RippleLink>
               );
             })}
@@ -113,7 +104,7 @@ export default function Header() {
                 aria-expanded={isMoreOpen}
               >
                 <ChevronDown className="h-4 w-4" />
-                <span>More</span>
+                <span>{t('nav.more')}</span>
               </button>
 
               <AnimatePresence>
@@ -125,7 +116,7 @@ export default function Header() {
                     transition={{ duration: 0.18 }}
                     className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-slate-200 py-2 z-50 overflow-hidden"
                   >
-                    {moreNav.map((item) => {
+                      {moreNav.map((item) => {
                       const Icon = item.icon;
                       const isActive = pathname === item.href;
                       return (
@@ -140,7 +131,7 @@ export default function Header() {
                           onClick={() => setIsMoreOpen(false)}
                         >
                           <Icon className={`h-4 w-4 ${isActive ? "text-red-600" : ""}`} />
-                          <span>{item.label}</span>
+                            <span>{t(`nav.${item.key}`)}</span>
                         </RippleLink>
                       );
                     })}
@@ -190,7 +181,7 @@ export default function Header() {
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           <Icon className={`h-4 w-4 ${isActive ? "text-red-600" : ""}`} />
-                          <span>{item.label}</span>
+                          <span>{t(`nav.${item.key}`)}</span>
                         </RippleLink>
                       );
                     })}
@@ -232,7 +223,7 @@ export default function Header() {
                                   onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                   <Icon className={`h-4 w-4 ${isActive ? "text-red-600" : ""}`} />
-                                  <span>{item.label}</span>
+                                  <span>{t(`nav.${item.key}`)}</span>
                                 </RippleLink>
                               );
                             })}
@@ -268,13 +259,13 @@ export default function Header() {
                   >
                     <button
                       onClick={() => setLanguage('en')}
-                      className={`w-full text-left px-3 py-2 text-sm ${lang === 'en' ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-slate-50'}`}
+                      className={`w-full text-left px-3 py-2 text-sm ${locale === 'en' ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-slate-50'}`}
                     >
                       EN
                     </button>
                     <button
                       onClick={() => setLanguage('ar')}
-                      className={`w-full text-left px-3 py-2 text-sm ${lang === 'ar' ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-slate-50'}`}
+                      className={`w-full text-left px-3 py-2 text-sm ${locale === 'ar' ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-slate-50'}`}
                     >
                       AR
                     </button>

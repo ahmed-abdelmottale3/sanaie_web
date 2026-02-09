@@ -1,9 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { useI18n } from "../../i18n/I18nProvider";
 
 export default function MobileAppSection() {
+  const { t, locale } = useI18n();
+
+  const features = Array.isArray(t("mobile.features")) ? (t("mobile.features") as string[]) : [];
+
   return (
     <section className="py-20 bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -21,20 +25,18 @@ export default function MobileAppSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-3xl font-extrabold text-gray-900 sm:text-4xl"
+              className={`text-3xl font-extrabold text-gray-900 sm:text-4xl ${locale === 'ar' ? 'text-ar-right' : ''}`}
             >
-              Download Our Mobile App
+              {t("mobile.download_title")}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className="mt-4 text-lg text-gray-600"
+              className={`mt-4 text-lg text-gray-600 ${locale === 'ar' ? 'text-ar-right' : ''}`}
             >
-              Get instant access to trusted service providers right from your
-              phone. Book services, track orders, and manage your account on the
-              go.
+              {t("mobile.download_sub")}
             </motion.p>
 
             <motion.ul
@@ -44,28 +46,12 @@ export default function MobileAppSection() {
               viewport={{ once: true }}
               className="mt-6 space-y-3 text-left"
             >
-              <li className="flex items-center text-gray-700">
-                <span className="mr-3 text-red-600">✓</span>
-                Easy booking and scheduling
-              </li>
-              <li className="flex items-center text-gray-700">
-                <span className="mr-3 text-red-600">✓</span>
-                Real-time order tracking
-              </li>
-
-              <li className="flex items-center text-gray-700">
-                <span className="mr-3 text-red-600">✓</span>
-                Verified professionals with ratings and reviews
-              </li>
-              <li className="flex items-center text-gray-700">
-                <span className="mr-3 text-red-600">✓</span>
-                In-app messaging to communicate with providers
-              </li>
-
-              <li className="flex items-center text-gray-700">
-                <span className="mr-3 text-red-600">✓</span>
-                App-only promotions and local discounts
-              </li>
+              {features.map((f, i) => (
+                <li key={i} className="flex items-center text-gray-700">
+                  <span className="mr-3 text-red-600">✓</span>
+                  {f}
+                </li>
+              ))}
             </motion.ul>
 
             {/* Google Play Button */}
@@ -82,16 +68,12 @@ export default function MobileAppSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl"
               >
-                <svg
-                  className="w-8 h-8 mr-3"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
+                <svg className="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
                 </svg>
                 <div className="text-left">
                   <div className="text-xs">GET IT ON</div>
-                  <div className="text-xl font-semibold -mt-1">Google Play</div>
+                  <div className="text-xl font-semibold -mt-1">{t("mobile.get_on_play")}</div>
                 </div>
               </a>
             </motion.div>

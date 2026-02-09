@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "Home",
+    "customers": "Customers",
+    "providers": "Providers",
+    "categories": "Categories",
+    "services": "Services",
+    "requests": "Requests",
+    "ads": "Ads",
+    "more": "More"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to the most common questions about our platform",
+    "what_is": "What is Sanaie and how does it work?",
+    "what_is_answer": "Sanaie is a local services marketplace that connects customers with verified service providers. Search by category or use the request page to get quotes, then book and pay securely through the platform.",
+    "find_book": "How do I find and book a service?",
+    "find_book_answer": "Browse categories or use the search bar to find services. Open a provider's profile to view ratings, past work, and prices, then choose a time and confirm the booking from the service page.",
+    "providers_verified": "How are service providers verified?",
+    "providers_verified_answer": "Providers go through identity and document verification before offering services. We also collect customer reviews and ratings to maintain quality and trust on the platform.",
+    "payments": "Which payment methods are supported?",
+    "payments_answer": "We support secure online payments (credit/debit cards and local wallets) and may offer cash-on-delivery where applicable. All card payments are processed over encrypted connections.",
+    "cancellation": "What is the cancellation and refund policy?",
+    "cancellation_answer": "When you cancel an order, you can get a refund and keep it as credit in the app.",
+    "become_provider": "How can I become a service provider on Sanaie?",
+    "become_provider_answer": "Sign up as a provider from the 'Join as Service Provider' link, submit required documents, and complete the onboarding steps. Once verified, you can publish services and receive bookings.",
+    "advertise": "How do I advertise or promote my service on the site?",
+    "advertise_answer": "Advertisers can create promotional ads via the Ads section. Contact our sales team or use the dashboard (if available) to set up campaigns and target your audience.",
+    "availability": "Is Sanaie available in my city?",
+    "availability_answer": "Sanaie currently operates in major cities across Egypt. If your city isn't listed, submit a request through the contact form and we'll consider expanding coverage.",
+    "support": "How can I contact customer support?",
+    "support_answer": "Use the support/contact page, email us, or call the helpline listed in the footer. Provide booking or account details so we can help quickly."
+    ,
+    "show_more": "Show more FAQs",
+    "show_less": "Show less"
+  },
+  "mobile": {
+    "download_title": "Download Our Mobile App",
+    "download_sub": "Get instant access to trusted service providers right from your phone. Book services, track orders, and manage your account on the go.",
+    "features": [
+      "Easy booking and scheduling",
+      "Real-time order tracking",
+      "Secure payment options",
+      "Verified professionals with ratings and reviews",
+      "In-app messaging to communicate with providers",
+      "Request multiple quotes and compare offers",
+      "App-only promotions and local discounts"
+    ],
+    "get_on_play": "Google Play"
+  },
+  "hero": {
+    "title": "Welcome to Sanaie Platform",
+    "subtitle": "A leading platform connecting customers with trusted service providers. Join thousands of satisfied users and discover quality services.",
+    "active_users": "Active Users",
+    "providers": "Providers",
+    "services": "Services",
+    "completed": "Completed",
+    "active_ads": "Active Ads",
+    "categories": "Categories",
+    "view_statistics": "View Statistics",
+    "learn_more": "Learn More"
+  },
+  "features": {
+    "title": "Why Choose Sanaie Platform?",
+    "subtitle": "Discover what makes us the preferred choice for customers and service providers",
+    "large_community_title": "Large Community",
+    "large_community_desc": "Join thousands of active users and service providers in our growing community.",
+    "trusted_platform_title": "Trusted Platform",
+    "trusted_platform_desc": "Verified service providers and secure transactions for peace of mind.",
+    "quick_easy_title": "Quick & Easy",
+    "quick_easy_desc": "Find and connect with service providers quickly and effortlessly.",
+    "quality_services_title": "Quality Services",
+    "quality_services_desc": "Access a wide range of professional services across multiple categories."
+  },
+  "stats": {
+    "title": "Platform Statistics",
+    "subtitle": "Real-time statistics showcasing our growing community and successful platform",
+    "total_users": "Total Active Users",
+    "total_users_desc": "Customers and providers actively using our platform",
+    "service_providers": "Service Providers",
+    "service_providers_desc": "Trusted professionals ready to serve you",
+    "available_services": "Available Services",
+    "available_services_desc": "Wide range of services across multiple categories",
+    "completed_requests": "Completed Requests",
+    "completed_requests_desc": "Successfully completed service requests",
+    "active_advertisements": "Active Advertisements",
+    "active_advertisements_desc": "Promotional content reaching our audience",
+    "service_categories": "Service Categories",
+    "service_categories_desc": "Diverse categories to meet all your needs"
+  },
+  "cta": {
+    "title": "Ready to Get Started?",
+    "subtitle": "Join our platform today and experience the difference. Whether you're looking for services or offering them, we're here to help.",
+    "get_started": "Get Started",
+    "view_statistics": "View Statistics"
+  },
+  "footer": {
+    "tagline": "Connecting customers with trusted service providers.",
+    "platform": "Platform",
+    "statistics": "Statistics",
+    "features": "Features",
+    "resources": "Resources",
+    "documentation": "Documentation",
+    "support": "Support",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service",
+    "copyright": "All rights reserved."
+  },
+  "ads": {
+    "title": "Our Advertisements",
+    "subtitle": "Discover our latest promotions and featured content"
+  }
+}

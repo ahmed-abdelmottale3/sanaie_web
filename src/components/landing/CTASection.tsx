@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useI18n } from "../../i18n/I18nProvider";
 
 export default function CTASection() {
+  const { t } = useI18n();
+
   return (
     <section className="py-20 bg-red-600 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -15,24 +18,24 @@ export default function CTASection() {
           className="text-center"
         >
           <h2 className="text-3xl font-extrabold sm:text-4xl md:text-5xl">
-            Ready to Get Started?
+            {t("cta.title")}
           </h2>
           <p className="mt-4 text-lg text-red-100 max-w-2xl mx-auto">
-            Join our platform today and experience the difference. Whether you're looking for services or offering them, we're here to help.
+            {t("cta.subtitle")}
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href="#"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-3 text-base font-semibold text-red-600 shadow-lg transition-all hover:bg-red-50 hover:shadow-xl"
             >
-              Get Started
+              {t("cta.get_started")}
               <ArrowRight className="h-5 w-5" />
             </a>
             <a
               href="#stats"
               className="inline-flex items-center rounded-lg border-2 border-white px-8 py-3 text-base font-semibold text-white transition-all hover:bg-white/10"
             >
-              View Statistics
+              {t("cta.view_statistics")}
             </a>
           </div>
         </motion.div>

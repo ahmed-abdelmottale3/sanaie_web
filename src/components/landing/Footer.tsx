@@ -1,7 +1,10 @@
 "use client";
 
+import { useI18n } from "../../i18n/I18nProvider";
 
 export default function Footer() {
+  const { t } = useI18n();
+
   return (
     <footer className="border-t border-slate-200 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -16,34 +19,34 @@ export default function Footer() {
               <span className="text-lg font-bold text-slate-900">Sanaie Platform</span>
             </div>
             <p className="text-sm text-slate-600">
-              Connecting customers with trusted service providers.
+              {t("footer.tagline")}
             </p>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 mb-4">Platform</h3>
+            <h3 className="text-sm font-semibold text-slate-900 mb-4">{t("footer.platform")}</h3>
             <ul className="space-y-2 text-sm text-slate-600">
-              <li><a href="#stats" className="hover:text-slate-900 transition-colors">Statistics</a></li>
-              <li><a href="#features" className="hover:text-slate-900 transition-colors">Features</a></li>
+              <li><a href="#stats" className="hover:text-slate-900 transition-colors">{t("footer.statistics")}</a></li>
+              <li><a href="#features" className="hover:text-slate-900 transition-colors">{t("footer.features")}</a></li>
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 mb-4">Resources</h3>
+            <h3 className="text-sm font-semibold text-slate-900 mb-4">{t("footer.resources")}</h3>
             <ul className="space-y-2 text-sm text-slate-600">
-              <li><a href="#" className="hover:text-slate-900">Documentation</a></li>
-              <li><a href="#" className="hover:text-slate-900">Support</a></li>
-              <li><a href="#" className="hover:text-slate-900">Contact</a></li>
+              <li><a href="#" className="hover:text-slate-900">{t("footer.documentation")}</a></li>
+              <li><a href="#" className="hover:text-slate-900">{t("footer.support")}</a></li>
+              <li><a href="#" className="hover:text-slate-900">{t("footer.contact")}</a></li>
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 mb-4">Legal</h3>
+            <h3 className="text-sm font-semibold text-slate-900 mb-4">{t("footer.legal")}</h3>
             <ul className="space-y-2 text-sm text-slate-600">
-              <li><a href="#" className="hover:text-slate-900">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-slate-900">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-slate-900">{t("footer.privacy_policy")}</a></li>
+              <li><a href="#" className="hover:text-slate-900">{t("footer.terms_of_service")}</a></li>
             </ul>
           </div>
         </div>
         <div className="mt-8 border-t border-slate-200 pt-8 text-center text-sm text-slate-600">
-          <p>&copy; {new Date().getFullYear()} Sanaie Platform. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Sanaie Platform. {t("footer.copyright")}</p>
         </div>
       </div>
     </footer>

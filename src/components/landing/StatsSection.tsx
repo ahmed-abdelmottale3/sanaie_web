@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import CounterAnimation from "../analytics/CounterAnimation";
 import { Users, Briefcase, ShoppingBag, FileText, Megaphone, FolderTree } from "lucide-react";
+import { useI18n } from "../../i18n/I18nProvider";
 
 interface StatsSectionProps {
   stats?: {
@@ -17,6 +18,8 @@ interface StatsSectionProps {
 }
 
 export default function StatsSection({ stats, loading = false }: StatsSectionProps) {
+  const { t } = useI18n();
+
   if (loading || !stats) {
     return null;
   }
@@ -27,50 +30,56 @@ export default function StatsSection({ stats, loading = false }: StatsSectionPro
     {
       icon: Users,
       value: totalUsers,
-      label: "Total Active Users",
-      description: "Customers and providers actively using our platform",
+      labelKey: "stats.total_users",
+      descKey: "stats.total_users_desc",
       color: "text-red-600",
       bgColor: "bg-red-50",
+      link: "/customers",
     },
     {
       icon: Briefcase,
       value: stats.providers,
-      label: "Service Providers",
-      description: "Trusted professionals ready to serve you",
+      labelKey: "stats.service_providers",
+      descKey: "stats.service_providers_desc",
       color: "text-orange-600",
       bgColor: "bg-orange-50",
+      link: "/providers",
     },
     {
       icon: ShoppingBag,
       value: stats.services,
-      label: "Available Services",
-      description: "Wide range of services across multiple categories",
+      labelKey: "stats.available_services",
+      descKey: "stats.available_services_desc",
       color: "text-rose-600",
       bgColor: "bg-rose-50",
+      link: "/services",
     },
     {
       icon: FileText,
       value: stats.requests,
-      label: "Completed Requests",
-      description: "Successfully completed service requests",
+      labelKey: "stats.completed_requests",
+      descKey: "stats.completed_requests_desc",
       color: "text-red-500",
       bgColor: "bg-red-50",
+      link: "/requests",
     },
     {
       icon: Megaphone,
       value: stats.ads,
-      label: "Active Advertisements",
-      description: "Promotional content reaching our audience",
+      labelKey: "stats.active_advertisements",
+      descKey: "stats.active_advertisements_desc",
       color: "text-pink-600",
       bgColor: "bg-pink-50",
+      link: "/ads",
     },
     {
       icon: FolderTree,
       value: stats.categories,
-      label: "Service Categories",
-      description: "Diverse categories to meet all your needs",
+      labelKey: "stats.service_categories",
+      descKey: "stats.service_categories_desc",
       color: "text-red-700",
       bgColor: "bg-red-50",
+      link: "/categories",
     },
   ];
 
@@ -85,10 +94,10 @@ export default function StatsSection({ stats, loading = false }: StatsSectionPro
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl md:text-5xl">
-            Platform Statistics
+            {t("stats.title")}
           </h2>
           <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-            Real-time statistics showcasing our growing community and successful platform
+            {t("stats.subtitle")}
           </p>
         </motion.div>
 
@@ -97,15 +106,8 @@ export default function StatsSection({ stats, loading = false }: StatsSectionPro
             const Icon = item.icon;
             return (
               <motion.a
-                key={item.label}
-                href={
-                  item.label === "Total Active Users" ? "/customers" :
-                  item.label === "Service Providers" ? "/providers" :
-                  item.label === "Available Services" ? "/services" :
-                  item.label === "Completed Requests" ? "/requests" :
-                  item.label === "Active Advertisements" ? "/ads" :
-                  item.label === "Service Categories" ? "/categories" : "#"
-                }
+                key={item.labelKey}
+                href={item.link}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -119,10 +121,10 @@ export default function StatsSection({ stats, loading = false }: StatsSectionPro
                   <CounterAnimation value={item.value} />
                 </div>
                 <div className="text-base font-semibold text-slate-900 mb-2">
-                  {item.label}
+                  {t(item.labelKey)}
                 </div>
                 <div className="text-sm text-slate-600">
-                  {item.description}
+                  {t(item.descKey)}
                 </div>
               </motion.a>
             );

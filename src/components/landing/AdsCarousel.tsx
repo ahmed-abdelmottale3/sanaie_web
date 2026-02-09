@@ -7,8 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Megaphone } from "lucide-react";
 import LoadingSpinner from "../analytics/LoadingSpinner";
 import ErrorMessage from "../analytics/ErrorMessage";
+import { useI18n } from "../../i18n/I18nProvider";
 
 export default function AdsCarousel() {
+  const { t } = useI18n();
   const { data: ads, loading, error, refetch } = useActiveAds();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -97,7 +99,7 @@ export default function AdsCarousel() {
             viewport={{ once: true }}
             className="text-3xl font-extrabold text-slate-900 sm:text-4xl"
           >
-            Our Advertisements
+            {t("ads.title")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -106,7 +108,7 @@ export default function AdsCarousel() {
             viewport={{ once: true }}
             className="mt-4 text-lg text-slate-600"
           >
-            Discover our latest promotions and featured content
+            {t("ads.subtitle")}
           </motion.p>
         </motion.div>
 

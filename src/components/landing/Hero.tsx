@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import CounterAnimation from "../analytics/CounterAnimation";
 import { Users, Briefcase, ShoppingBag, FileText, Megaphone, FolderTree, ArrowRight } from "lucide-react";
+import { useI18n } from "../../i18n/I18nProvider";
 
 interface HeroProps {
   stats?: {
@@ -17,6 +18,7 @@ interface HeroProps {
 }
 
 export default function Hero({ stats, loading = false }: HeroProps) {
+  const { t } = useI18n();
   const totalUsers = (stats?.customers || 0) + (stats?.providers || 0);
 
   return (
@@ -76,7 +78,7 @@ export default function Hero({ stats, loading = false }: HeroProps) {
             viewport={{ once: true }}
             className="text-4xl font-extrabold sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            Welcome to Sanaie Platform
+            {t("hero.title")}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -85,8 +87,7 @@ export default function Hero({ stats, loading = false }: HeroProps) {
             viewport={{ once: true }}
             className="mx-auto mt-6 max-w-2xl text-lg text-red-100 sm:text-xl md:text-2xl"
           >
-            A leading platform connecting customers with trusted service providers.
-            Join thousands of satisfied users and discover quality services.
+            {t("hero.subtitle")}
           </motion.p>
           
           {!loading && stats && (
@@ -102,42 +103,42 @@ export default function Hero({ stats, loading = false }: HeroProps) {
                 <div className="text-2xl font-bold">
                   <CounterAnimation value={totalUsers} />
                 </div>
-                <div className="text-xs text-red-100">Active Users</div>
+                <div className="text-xs text-red-100">{t("hero.active_users")}</div>
               </div>
               <div className="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
                 <Briefcase className="mx-auto mb-2 h-6 w-6" />
                 <div className="text-2xl font-bold">
                   <CounterAnimation value={stats.providers} />
                 </div>
-                <div className="text-xs text-red-100">Providers</div>
+                <div className="text-xs text-red-100">{t("hero.providers")}</div>
               </div>
               <div className="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
                 <ShoppingBag className="mx-auto mb-2 h-6 w-6" />
                 <div className="text-2xl font-bold">
                   <CounterAnimation value={stats.services} />
                 </div>
-                <div className="text-xs text-red-100">Services</div>
+                <div className="text-xs text-red-100">{t("hero.services")}</div>
               </div>
               <div className="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
                 <FileText className="mx-auto mb-2 h-6 w-6" />
                 <div className="text-2xl font-bold">
                   <CounterAnimation value={stats.requests} />
                 </div>
-                <div className="text-xs text-red-100">Completed</div>
+                <div className="text-xs text-red-100">{t("hero.completed")}</div>
               </div>
               <div className="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
                 <Megaphone className="mx-auto mb-2 h-6 w-6" />
                 <div className="text-2xl font-bold">
                   <CounterAnimation value={stats.ads} />
                 </div>
-                <div className="text-xs text-red-100">Active Ads</div>
+                <div className="text-xs text-red-100">{t("hero.active_ads")}</div>
               </div>
               <div className="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
                 <FolderTree className="mx-auto mb-2 h-6 w-6" />
                 <div className="text-2xl font-bold">
                   <CounterAnimation value={stats.categories} />
                 </div>
-                <div className="text-xs text-red-100">Categories</div>
+                <div className="text-xs text-red-100">{t("hero.categories")}</div>
               </div>
             </motion.div>
           )}
@@ -159,14 +160,14 @@ export default function Hero({ stats, loading = false }: HeroProps) {
               href="#stats"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-base font-semibold text-red-600 shadow-lg transition-all hover:bg-red-50 hover:shadow-xl"
             >
-              View Statistics
+              {t("hero.view_statistics")}
               <ArrowRight className="h-5 w-5" />
             </a>
             <a
               href="#features"
               className="inline-flex items-center rounded-lg border-2 border-white px-6 py-3 text-base font-semibold text-white transition-all hover:bg-white/10"
             >
-              Learn More
+              {t("hero.learn_more")}
             </a>
           </motion.div>
         </motion.div>

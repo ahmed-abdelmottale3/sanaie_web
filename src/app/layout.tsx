@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import I18nProvider from "../i18n/I18nProvider";
 import { Toaster } from "react-hot-toast";
 import { SplashProvider } from "../contexts/SplashContext";
 import GlobalSplashScreen from "../components/GlobalSplashScreen";
@@ -61,14 +62,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SplashProvider>
-          <GlobalSplashScreen />
-          <AppLayout>
-            {children}
-          </AppLayout>
-          <ScrollToTop />
-          <Toaster position="top-right" />
-        </SplashProvider>
+        <I18nProvider>
+          <SplashProvider>
+            <GlobalSplashScreen />
+            <AppLayout>
+              {children}
+            </AppLayout>
+            <ScrollToTop />
+            <Toaster position="top-right" />
+          </SplashProvider>
+        </I18nProvider>
       </body>
     </html>
   );

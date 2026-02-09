@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --font-geist-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-cairo: 'Cairo', 'Noto Naskh Arabic', system-ui, -apple-system;
   --primary: #2563eb; 
   --on-primary: #ffffff;
   --muted: #6b7280; 
@@ -43,6 +45,17 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* When Arabic is active we prefer the Cairo font and RTL layout */
+.lang-ar body {
+  font-family: var(--font-cairo) !important;
+  direction: rtl;
+}
+
+.lang-en body {
+  font-family: var(--font-geist-sans) !important;
+  direction: ltr;
+}
+
 /* Custom Scrollbar Styles */
 ::-webkit-scrollbar {
   width: 8px;
@@ -68,6 +81,9 @@ html, body {
   background: #f1f5f9;
 }
 
+.text-ar-right{
+  text-align: right !important;
+}
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
