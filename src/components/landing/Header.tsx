@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { BarChart3, Users, Briefcase, ShoppingBag, FileText, Megaphone, FolderTree, Menu, X, ChevronDown, Home } from "lucide-react";
+import { BarChart3, Users, Briefcase, ShoppingBag, FileText, Megaphone, FolderTree, Menu, X, ChevronDown, Home, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import RippleLink from "../ui/RippleLink";
 
@@ -24,8 +24,11 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [isMobileMoreOpen, setIsMobileMoreOpen] = useState(false);
+  const [lang, setLang] = useState<"en" | "ar">("en");
+  const [isLangOpen, setIsLangOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const moreRef = useRef<HTMLDivElement>(null);
+  const langRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -39,6 +42,9 @@ export default function Header() {
       if (moreRef.current && !moreRef.current.contains(event.target as Node)) {
         setIsMoreOpen(false);
       }
+      if (langRef.current && !langRef.current.contains(event.target as Node)) {
+        setIsLangOpen(false);
+      }
     };
 
     if (isMobileMenuOpen) {
@@ -49,6 +55,21 @@ export default function Header() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("sanaie_lang");
+      if (saved === "en" || saved === "ar") setLang(saved);
+    } catch (e) {}
+  }, []);
+
+  const setLanguage = (next: "en" | "ar") => {
+    setLang(next);
+    try {
+      localStorage.setItem("sanaie_lang", next);
+    } catch (e) {}
+    setIsLangOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm shadow-sm">
@@ -224,6 +245,43 @@ export default function Header() {
               )}
             </AnimatePresence>
           </div>
+
+            {/* Language toggle (far right) */}
+            <div className="ml-3 relative" ref={langRef}>
+              <button
+                onClick={() => setIsLangOpen((s) => !s)}
+                aria-label="Toggle language menu"
+                className="inline-flex items-center px-3 py-2 rounded-md text-sm font-medium bg-white hover:bg-slate-50"
+              >
+                <span className="sr-only">Change language</span>
+                <Globe className="h-5 w-5 text-slate-700" />
+              </button>
+
+              <AnimatePresence>
+                {isLangOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.18 }}
+                    className="absolute right-0 mt-2 w-28 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-50 overflow-hidden"
+                  >
+                    <button
+                      onClick={() => setLanguage('en')}
+                      className={`w-full text-left px-3 py-2 text-sm ${lang === 'en' ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-slate-50'}`}
+                    >
+                      EN
+                    </button>
+                    <button
+                      onClick={() => setLanguage('ar')}
+                      className={`w-full text-left px-3 py-2 text-sm ${lang === 'ar' ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-slate-50'}`}
+                    >
+                      AR
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
         </div>
       </div>
     </header>
