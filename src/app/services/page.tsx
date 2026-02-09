@@ -47,9 +47,14 @@ export default function ServicesPage() {
     return null;
   }
 
+  const s = (key: string) => {
+    const v = t(key as any);
+    return Array.isArray(v) ? v.join("") : (v as string);
+  };
+
   const chartData = [
-    { name: t("services.chart_available"), value: stats.available },
-    { name: t("services.chart_unavailable"), value: stats.unavailable },
+    { name: s("services.chart_available"), value: stats.available },
+    { name: s("services.chart_unavailable"), value: stats.unavailable },
   ];
 
   return (
@@ -57,36 +62,36 @@ export default function ServicesPage() {
       <Header />
       <div className="min-h-screen bg-white">
         <PageHero
-          title={t("services.title")}
-          description={t("services.description")}
+          title={s("services.title")}
+          description={s("services.description")}
         />
 
         <section className="py-12 bg-slate-50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               <StatCard
-                title={t("services.stat_total")}
+                title={s("services.stat_total")}
                 value={stats.total}
                 icon={ShoppingBag}
                 iconColor="text-green-600"
                 bgColor="bg-green-50"
               />
               <StatCard
-                title={t("services.stat_available")}
+                title={s("services.stat_available")}
                 value={stats.available}
                 icon={CheckCircle}
                 iconColor="text-green-600"
                 bgColor="bg-green-50"
               />
               <StatCard
-                title={t("services.stat_unavailable")}
+                title={s("services.stat_unavailable")}
                 value={stats.unavailable}
                 icon={XCircle}
                 iconColor="text-red-600"
                 bgColor="bg-red-50"
               />
               <StatCard
-                title={t("services.stat_availability_rate")}
+                title={s("services.stat_availability_rate")}
                 value={stats.availabilityRate}
                 icon={CheckCircle}
                 iconColor="text-blue-600"
@@ -97,26 +102,26 @@ export default function ServicesPage() {
 
             <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">{t("services.chart_title")}</h3>
+                <h3 className="mb-4 text-lg font-bold text-slate-900">{s("services.chart_title")}</h3>
                 <PieChart data={chartData} height={300} />
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">{t("services.metrics_title")}</h3>
+                <h3 className="mb-4 text-lg font-bold text-slate-900">{s("services.metrics_title")}</h3>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("services.metric_total")}</span>
+                    <span className="text-sm font-semibold text-slate-600">{s("services.metric_total")}</span>
                     <span className="text-xl font-bold text-slate-900">{stats.total.toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("services.metric_available")}</span>
+                    <span className="text-sm font-semibold text-slate-600">{s("services.metric_available")}</span>
                     <span className="text-xl font-bold text-slate-900">{stats.available.toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("services.metric_unavailable")}</span>
+                    <span className="text-sm font-semibold text-slate-600">{s("services.metric_unavailable")}</span>
                     <span className="text-xl font-bold text-slate-900">{stats.unavailable.toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("services.metric_availability_rate")}</span>
+                    <span className="text-sm font-semibold text-slate-600">{s("services.metric_availability_rate")}</span>
                     <span className="text-xl font-bold text-slate-900">{stats.availabilityRate.toFixed(1)}%</span>
                   </div>
                 </div>

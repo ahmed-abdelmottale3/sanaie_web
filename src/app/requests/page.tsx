@@ -47,11 +47,16 @@ export default function RequestsPage() {
     return null;
   }
 
+  const s = (key: string) => {
+    const v = t(key as any);
+    return Array.isArray(v) ? v.join("") : (v as string);
+  };
+
   const chartData = [
-    { name: t("requests.chart_pending"), value: stats.pending },
-    { name: t("requests.chart_approved"), value: stats.approved },
-    { name: t("requests.chart_rejected"), value: stats.rejected },
-    { name: t("requests.chart_completed"), value: stats.completed },
+    { name: s("requests.chart_pending"), value: stats.pending },
+    { name: s("requests.chart_approved"), value: stats.approved },
+    { name: s("requests.chart_rejected"), value: stats.rejected },
+    { name: s("requests.chart_completed"), value: stats.completed },
   ];
 
   return (
@@ -59,50 +64,50 @@ export default function RequestsPage() {
       <Header />
       <div className="min-h-screen bg-white">
         <PageHero
-          title={t("requests.title")}
-          description={t("requests.description")}
+          title={s("requests.title")}
+          description={s("requests.description")}
         />
 
         <section className="py-12 bg-slate-50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-6">
               <StatCard
-                title={t("requests.stat_total")}
+                title={s("requests.stat_total")}
                 value={stats.total}
                 icon={FileText}
                 iconColor="text-blue-600"
                 bgColor="bg-blue-50"
               />
               <StatCard
-                title={t("requests.stat_pending")}
+                title={s("requests.stat_pending")}
                 value={stats.pending}
                 icon={Clock}
                 iconColor="text-yellow-600"
                 bgColor="bg-yellow-50"
               />
               <StatCard
-                title={t("requests.stat_approved")}
+                title={s("requests.stat_approved")}
                 value={stats.approved}
                 icon={CheckCircle}
                 iconColor="text-green-600"
                 bgColor="bg-green-50"
               />
               <StatCard
-                title={t("requests.stat_rejected")}
+                title={s("requests.stat_rejected")}
                 value={stats.rejected}
                 icon={XCircle}
                 iconColor="text-red-600"
                 bgColor="bg-red-50"
               />
               <StatCard
-                title={t("requests.stat_completed")}
+                title={s("requests.stat_completed")}
                 value={stats.completed}
                 icon={CheckCircle}
                 iconColor="text-purple-600"
                 bgColor="bg-purple-50"
               />
               <StatCard
-                title={t("requests.stat_avg_rating")}
+                title={s("requests.stat_avg_rating")}
                 value={stats.averageRating}
                 icon={Star}
                 iconColor="text-orange-600"
@@ -113,11 +118,11 @@ export default function RequestsPage() {
 
             <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">{t("requests.chart_title")}</h3>
+                <h3 className="mb-4 text-lg font-bold text-slate-900">{s("requests.chart_title")}</h3>
                 <BarChart data={chartData} color="#ef4444" height={300} />
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">{t("requests.performance_title")}</h3>
+                <h3 className="mb-4 text-lg font-bold text-slate-900">{s("requests.performance_title")}</h3>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
                     <span className="text-sm font-semibold text-slate-600">{t("requests.metric_completion_rate")}</span>

@@ -358,7 +358,11 @@ export default function CategoriesPage() {
                                       <div className="text-sm font-semibold text-slate-900">
                                         {service.priceRange?.from && service.priceRange?.to ? (
                                           <span>
-                                            {t("categories.price_range").replace("{from}", service.priceRange.from.toLocaleString()).replace("{to}", service.priceRange.to.toLocaleString())}
+                                            {(() => {
+                                              const tmpl = t("categories.price_range");
+                                              const str = Array.isArray(tmpl) ? tmpl.join("") : tmpl;
+                                              return str.replace("{from}", service.priceRange.from.toLocaleString()).replace("{to}", service.priceRange.to.toLocaleString());
+                                            })()}
                                           </span>
                                         ) : (
                                           <span className="text-slate-500">{t("categories.price_not_available")}</span>
