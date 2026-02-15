@@ -10,7 +10,9 @@
     "more": "المزيد"
   },
   "header": {
-    "platform_name": "منصة صنايعي"
+    "platform_name": "منصة صنايعي",
+    "change_theme": "تغيير السمة",
+    "change_language": "تغيير اللغة"
   },
   "faq": {
     "title": "الأسئلة المتكررة",

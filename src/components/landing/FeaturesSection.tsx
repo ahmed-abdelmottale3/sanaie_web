@@ -31,7 +31,7 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section id="features" className="py-20 bg-white">
+    <section id="features" className="py-20 bg-white dark:bg-slate-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,10 +40,10 @@ export default function FeaturesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl md:text-5xl">
             {t("features.title")}
           </h2>
-          <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             {t("features.subtitle")}
           </p>
         </motion.div>
@@ -60,13 +60,13 @@ export default function FeaturesSection() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="inline-flex rounded-lg bg-red-50 p-4 mb-4">
+                <div className="inline-flex rounded-lg bg-red-50 dark:bg-red-900/30 p-4 mb-4">
                   <Icon className="h-8 w-8 text-red-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                   {t(feature.titleKey)}
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-slate-600 dark:text-slate-400">
                   {t(feature.descKey)}
                 </p>
               </motion.div>

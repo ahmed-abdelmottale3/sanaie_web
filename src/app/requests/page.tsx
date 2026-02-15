@@ -21,7 +21,7 @@ export default function RequestsPage() {
     return (
       <>
         <Header />
-        <div className="flex min-h-[400px] items-center justify-center">
+        <div className="flex min-h-[400px] items-center justify-center bg-white dark:bg-slate-900">
           <LoadingSpinner size="lg" />
         </div>
         <Footer />
@@ -33,7 +33,7 @@ export default function RequestsPage() {
     return (
       <>
         <Header />
-        <div className="flex min-h-[400px] items-center justify-center">
+        <div className="flex min-h-[400px] items-center justify-center bg-white dark:bg-slate-900">
           <ErrorMessage message={error} onRetry={refetch} />
         </div>
         <Footer />
@@ -62,7 +62,7 @@ export default function RequestsPage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white dark:bg-slate-900">
         <PageHero
           title={s("requests.title")}
           description={s("requests.description")}
@@ -117,30 +117,30 @@ export default function RequestsPage() {
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">{s("requests.chart_title")}</h3>
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                <h3 className="mb-4 text-lg font-bold text-slate-900 dark:text-white">{s("requests.chart_title")}</h3>
                 <BarChart data={chartData} color="#ef4444" height={300} />
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">{s("requests.performance_title")}</h3>
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                <h3 className="mb-4 text-lg font-bold text-slate-900 dark:text-white">{s("requests.performance_title")}</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("requests.metric_completion_rate")}</span>
-                    <span className="text-xl font-bold text-slate-900">{stats.completionRate.toFixed(1)}%</span>
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{t("requests.metric_completion_rate")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">{stats.completionRate.toFixed(1)}%</span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("requests.metric_avg_rating")}</span>
-                    <span className="text-xl font-bold text-slate-900">{stats.averageRating.toFixed(1)} / 5</span>
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{t("requests.metric_avg_rating")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">{stats.averageRating.toFixed(1)} / 5</span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("requests.metric_approval_rate")}</span>
-                    <span className="text-xl font-bold text-slate-900">
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{t("requests.metric_approval_rate")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">
                       {stats.total > 0 ? ((stats.approved / stats.total) * 100).toFixed(1) : 0}%
                     </span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("requests.metric_rejection_rate")}</span>
-                    <span className="text-xl font-bold text-slate-900">
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{t("requests.metric_rejection_rate")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">
                       {stats.total > 0 ? ((stats.rejected / stats.total) * 100).toFixed(1) : 0}%
                     </span>
                   </div>

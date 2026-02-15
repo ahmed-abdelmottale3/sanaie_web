@@ -87,7 +87,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
   }
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-white dark:bg-slate-900">
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={pathname}

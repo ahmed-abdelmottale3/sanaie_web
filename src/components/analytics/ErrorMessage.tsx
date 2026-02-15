@@ -15,10 +15,10 @@ export default function ErrorMessage({
 }: ErrorMessageProps) {
   return (
     <div
-      className={`flex flex-col items-center justify-center rounded-xl border border-red-200 bg-red-50 p-6 ${className}`}
+      className={`flex flex-col items-center justify-center rounded-xl border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-6 ${className}`}
     >
       <AlertCircle className="h-8 w-8 text-red-600" />
-      <p className="mt-2 text-sm font-semibold text-red-700">{message}</p>
+      <p className="mt-2 text-sm font-semibold text-red-700 dark:text-red-400">{message}</p>
       {onRetry && (
         <button
           onClick={onRetry}

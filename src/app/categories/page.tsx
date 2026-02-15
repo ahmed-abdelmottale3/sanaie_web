@@ -26,7 +26,7 @@ export default function CategoriesPage() {
     return (
       <>
         <Header />
-        <div className="flex min-h-[400px] items-center justify-center">
+        <div className="flex min-h-[400px] items-center justify-center bg-white dark:bg-slate-900">
           <LoadingSpinner size="lg" />
         </div>
         <Footer />
@@ -38,7 +38,7 @@ export default function CategoriesPage() {
     return (
       <>
         <Header />
-        <div className="flex min-h-[400px] items-center justify-center">
+        <div className="flex min-h-[400px] items-center justify-center bg-white dark:bg-slate-900">
           <ErrorMessage message={error} onRetry={refetch} />
         </div>
         <Footer />
@@ -55,15 +55,15 @@ export default function CategoriesPage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white dark:bg-slate-900">
         <PageHero title={t("categories.title") as string} description={t("categories.description") as string} />
 
-        <section className="py-12 bg-slate-50">
+        <section className="py-12 bg-slate-50 dark:bg-slate-800/50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               <div
                 onClick={() => setShowCategories(!showCategories)}
-                className="cursor-pointer transform transition-all hover:scale-105 hover:shadow-lg relative group ring-2 ring-transparent hover:ring-red-200 hover:ring-opacity-50 rounded-xl"
+                className="cursor-pointer transform transition-all hover:scale-105 hover:shadow-lg relative group ring-2 ring-transparent hover:ring-red-200 dark:hover:ring-red-500 hover:ring-opacity-50 rounded-xl"
                 title={t("categories.click_view_services") as string}
               >
                 <StatCard
@@ -106,39 +106,39 @@ export default function CategoriesPage() {
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">{t("categories.overview_title")}</h3>
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                <h3 className="mb-4 text-lg font-bold text-slate-900 dark:text-white">{t("categories.overview_title")}</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("categories.total_categories")}</span>
-                    <span className="text-xl font-bold text-slate-900">{stats.total}</span>
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{t("categories.total_categories")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">{stats.total}</span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("categories.avg_services_per_category")}</span>
-                    <span className="text-xl font-bold text-slate-900">
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{t("categories.avg_services_per_category")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">
                       {stats.averageServicesPerCategory.toFixed(1)}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("categories.service_range")}</span>
-                    <span className="text-sm font-bold text-slate-900">
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{t("categories.service_range")}</span>
+                    <span className="text-sm font-bold text-slate-900 dark:text-white">
                       {stats.minServicesInCategory} - {stats.maxServicesInCategory}
                     </span>
                   </div>
                 </div>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">{t("categories.distribution_title")}</h3>
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                <h3 className="mb-4 text-lg font-bold text-slate-900 dark:text-white">{t("categories.distribution_title")}</h3>
                 <div className="space-y-4">
-                  <div className="rounded-lg bg-slate-50 p-4">
-                    <p className="text-sm font-semibold text-slate-600 mb-2">{t("categories.category_diversity")}</p>
-                    <p className="text-sm text-slate-600">
+                  <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <p className="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-2">{t("categories.category_diversity")}</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                       {(t("categories.diversity_desc") as string).replace('{total}', stats.total.toString())}
                     </p>
                   </div>
-                  <div className="rounded-lg bg-slate-50 p-4">
-                    <p className="text-sm font-semibold text-slate-600 mb-2">{t("categories.service_distribution")}</p>
-                    <p className="text-sm text-slate-600">
+                  <div className="rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <p className="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-2">{t("categories.service_distribution")}</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                       {(t("categories.distribution_desc") as string)
                         .replace('{min}', stats.minServicesInCategory.toString())
                         .replace('{max}', stats.maxServicesInCategory.toString())
@@ -159,22 +159,22 @@ export default function CategoriesPage() {
                   transition={{ duration: 0.3 }}
                   className="mt-12"
                 >
-                  <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <div className="rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-6 shadow-sm">
                     <div className="mb-6">
                       <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-2xl font-extrabold text-slate-900">{t("categories.all_categories")}</h2>
+                        <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">{t("categories.all_categories")}</h2>
                         <button
                           onClick={() => {
                             setShowCategories(false);
                             setSelectedCategoryId(null);
                           }}
-                          className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                          className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
                           aria-label={t("categories.close_categories") as string}
                         >
-                          <X className="h-5 w-5 text-slate-600" />
+                          <X className="h-5 w-5 text-slate-600 dark:text-slate-400" />
                         </button>
                       </div>
-                      <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
+                      <div className="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-4 py-2 rounded-full text-sm font-medium">
                         <MousePointer className="h-4 w-4" />
                         <span>{t("categories.interactive_hint")}</span>
                       </div>
@@ -196,8 +196,8 @@ export default function CategoriesPage() {
                       <>
                         {categories.length === 0 ? (
                           <div className="text-center py-12">
-                            <FolderTree className="mx-auto h-12 w-12 text-slate-400 mb-4" />
-                            <p className="text-lg font-semibold text-slate-600">{t("categories.no_categories_found")}</p>
+                            <FolderTree className="mx-auto h-12 w-12 text-slate-400 dark:text-slate-500 mb-4" />
+                            <p className="text-lg font-semibold text-slate-600 dark:text-slate-400">{t("categories.no_categories_found")}</p>
                           </div>
                         ) : (
                           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -214,15 +214,15 @@ export default function CategoriesPage() {
                                   onClick={() => setSelectedCategoryId(isSelected ? null : categoryId)}
                                   className={`rounded-xl border-2 p-4 cursor-pointer transition-all group ${
                                     isSelected
-                                      ? 'border-red-600 bg-red-50 shadow-lg'
-                                      : 'border-slate-200 bg-white hover:border-red-300 hover:bg-red-50 hover:shadow-md'
+                                      ? 'border-red-600 bg-red-50 dark:bg-red-900/20 shadow-lg'
+                                      : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 hover:border-red-300 dark:hover:border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 hover:shadow-md'
                                   }`}
                                   title={isSelected ? (t("categories.click_deselect") as string) : (t("categories.click_view_services") as string)}
                                 >
                                   <div className="flex items-start justify-between">
                                     <div className="flex-1">
                                       <div className="flex items-center justify-between mb-1">
-                                        <h3 className="text-lg font-bold text-slate-900">
+                                        <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                                           {category.categoryNameEnglish || category.categoryName}
                                         </h3>
                                         <div className="flex items-center gap-1 text-xs text-red-600 font-medium">
@@ -231,7 +231,7 @@ export default function CategoriesPage() {
                                         </div>
                                       </div>
                                       {category.description && (
-                                        <p className="text-sm text-slate-600 line-clamp-2 mb-2">
+                                        <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-2">
                                           {category.description}
                                         </p>
                                       )}
@@ -249,7 +249,7 @@ export default function CategoriesPage() {
                                           />
                                         </div>
                                       )}
-                                      <div className="mt-3 flex items-center justify-between text-xs text-slate-500">
+                                      <div className="mt-3 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
                                         <span>{t("categories.click_to_view")}</span>
                                         <ChevronRight
                                           className={`h-4 w-4 transition-transform ${
@@ -281,17 +281,17 @@ export default function CategoriesPage() {
                   transition={{ duration: 0.3 }}
                   className="mt-6"
                 >
-                  <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <div className="rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-6 shadow-sm">
                     <div className="flex items-center justify-between mb-6">
-                      <h2 className="text-2xl font-extrabold text-slate-900">
+                      <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
                         {t("categories.services_in")} {categories?.find(c => c._id === selectedCategoryId)?.categoryNameEnglish || t("categories.category")}
                       </h2>
                       <button
                         onClick={() => setSelectedCategoryId(null)}
-                        className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                        className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
                         aria-label={t("categories.close_services") as string}
                       >
-                        <X className="h-5 w-5 text-slate-600" />
+                        <X className="h-5 w-5 text-slate-600 dark:text-slate-400" />
                       </button>
                     </div>
 
@@ -311,8 +311,8 @@ export default function CategoriesPage() {
                       <>
                         {services.length === 0 ? (
                           <div className="text-center py-12">
-                            <Package className="mx-auto h-12 w-12 text-slate-400 mb-4" />
-                            <p className="text-lg font-semibold text-slate-600">{t("categories.no_services_found")}</p>
+                            <Package className="mx-auto h-12 w-12 text-slate-400 dark:text-slate-500 mb-4" />
+                            <p className="text-lg font-semibold text-slate-600 dark:text-slate-400">{t("categories.no_services_found")}</p>
                           </div>
                         ) : (
                           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -331,10 +331,10 @@ export default function CategoriesPage() {
                                   initial={{ opacity: 0, y: 20 }}
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                                  className="rounded-xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all"
+                                  className="rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-all"
                                 >
                                   {serviceImage && (
-                                    <div className="relative h-40 bg-slate-100">
+                                    <div className="relative h-40 bg-slate-100 dark:bg-slate-700">
                                       <img
                                         src={imageUrl}
                                         alt={service.title}
@@ -346,16 +346,16 @@ export default function CategoriesPage() {
                                     </div>
                                   )}
                                   <div className="p-4">
-                                    <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2">
+                                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 line-clamp-2">
                                       {service.title}
                                     </h3>
                                     {service.description && (
-                                      <p className="text-sm text-slate-600 mb-3 line-clamp-2">
+                                      <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 line-clamp-2">
                                         {service.description}
                                       </p>
                                     )}
                                     <div className="flex items-center justify-between">
-                                      <div className="text-sm font-semibold text-slate-900">
+                                      <div className="text-sm font-semibold text-slate-900 dark:text-white">
                                         {service.priceRange?.from && service.priceRange?.to ? (
                                           <span>
                                             {(() => {
@@ -365,13 +365,13 @@ export default function CategoriesPage() {
                                             })()}
                                           </span>
                                         ) : (
-                                          <span className="text-slate-500">{t("categories.price_not_available")}</span>
+                                          <span className="text-slate-500 dark:text-slate-400">{t("categories.price_not_available")}</span>
                                         )}
                                       </div>
                                       <div className={`px-2 py-1 rounded-full text-xs font-semibold ${
                                         service.availability
-                                          ? 'bg-green-100 text-green-700'
-                                          : 'bg-red-100 text-red-700'
+                                          ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400'
+                                          : 'bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400'
                                       }`}>
                                         {service.availability ? t("categories.available") : t("categories.unavailable")}
                                       </div>

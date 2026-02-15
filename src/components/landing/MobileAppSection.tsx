@@ -9,7 +9,7 @@ export default function MobileAppSection() {
   const features = Array.isArray(t("mobile.features")) ? (t("mobile.features") as string[]) : [];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-slate-100">
+    <section className="py-20 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
@@ -25,7 +25,7 @@ export default function MobileAppSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className={`text-3xl font-extrabold text-gray-900 sm:text-4xl ${locale === 'ar' ? 'text-ar-right' : ''}`}
+              className={`text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl ${locale === 'ar' ? 'text-ar-right' : ''}`}
             >
               {t("mobile.download_title")}
             </motion.h2>
@@ -34,7 +34,7 @@ export default function MobileAppSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className={`mt-4 text-lg text-gray-600 ${locale === 'ar' ? 'text-ar-right' : ''}`}
+              className={`mt-4 text-lg text-gray-600 dark:text-slate-400 ${locale === 'ar' ? 'text-ar-right' : ''}`}
             >
               {t("mobile.download_sub")}
             </motion.p>
@@ -47,7 +47,7 @@ export default function MobileAppSection() {
               className="mt-6 space-y-3 text-left"
             >
               {features.map((f, i) => (
-                <li key={i} className="flex items-center text-gray-700">
+                <li key={i} className="flex items-center text-gray-700 dark:text-slate-300">
                   <span className="mr-3 text-red-600">✓</span>
                   {f}
                 </li>

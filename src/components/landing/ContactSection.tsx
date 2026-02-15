@@ -46,7 +46,7 @@ export default function ContactSection() {
   })();
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-white">
+    <section className="py-20 bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -55,10 +55,10 @@ export default function ContactSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl mb-4">
+          <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl mb-4">
             {t("contact.title")}
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             {t("contact.subtitle")}
           </p>
         </motion.div>
@@ -71,7 +71,7 @@ export default function ContactSection() {
             viewport={{ once: true }}
             className="mb-8"
           >
-            <p className="text-center text-slate-700 font-medium mb-6">
+            <p className="text-center text-slate-700 dark:text-slate-300 font-medium mb-6">
               {t("contact.choose_method")}
             </p>
 
@@ -96,14 +96,14 @@ export default function ContactSection() {
                 }}
                 className={`relative overflow-hidden rounded-2xl border-2 p-8 transition-all duration-300 ${
                   selectedMethod === "email"
-                    ? "border-red-500 bg-red-50 shadow-lg"
-                    : "border-slate-200 bg-white hover:border-red-300 hover:shadow-md"
+                    ? "border-red-500 bg-red-50 dark:bg-red-900/20 shadow-lg"
+                    : "border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 hover:border-red-300 dark:hover:border-red-500 hover:shadow-md"
                 }`}
               >
                 <div className="flex flex-col items-center text-center">
                   <div
                     className={`mb-4 rounded-full p-4 ${
-                      selectedMethod === "email" ? "bg-red-100" : "bg-slate-100"
+                      selectedMethod === "email" ? "bg-red-100 dark:bg-red-900/40" : "bg-slate-100 dark:bg-slate-700"
                     }`}
                   >
                     <Mail
@@ -114,10 +114,10 @@ export default function ContactSection() {
                       }`}
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                     {t("contact.email_title")}
                   </h3>
-                  <p className="text-sm text-slate-600 mb-4">
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                     {t("contact.email_desc")}
                   </p>
                   {selectedMethod === "email" && (
@@ -126,8 +126,8 @@ export default function ContactSection() {
                       animate={{ opacity: 1, height: "auto" }}
                       className="w-full"
                     >
-                      <div className="mt-4 pt-4 border-t border-red-200">
-                        <p className="text-sm font-medium text-slate-700 mb-3">
+                      <div className="mt-4 pt-4 border-t border-red-200 dark:border-red-800">
+                        <p className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
                           {t("contact.email_address")}
                         </p>
                         <div className="flex items-center gap-2">
@@ -154,7 +154,7 @@ export default function ContactSection() {
                               e.stopPropagation();
                               handleCopy(email);
                             }}
-                            className="px-4 py-3 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+                            className="px-4 py-3 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg transition-colors"
                             title={(() => {
                               const copyText = t("contact.copy");
                               return typeof copyText === "string"
@@ -167,13 +167,13 @@ export default function ContactSection() {
                             {copied ? (
                               <Check className="h-4 w-4 text-green-600" />
                             ) : (
-                              <span className="text-sm font-medium text-slate-700">
+                              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                                 {t("contact.copy")}
                               </span>
                             )}
                           </button>
                         </div>
-                        <p className="text-xs text-slate-500 mt-3 break-all">
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-3 break-all">
                           {email}
                         </p>
                       </div>
@@ -202,16 +202,16 @@ export default function ContactSection() {
                 }}
                 className={`relative overflow-hidden rounded-2xl border-2 p-8 transition-all duration-300 ${
                   selectedMethod === "phone"
-                    ? "border-green-500 bg-green-50 shadow-lg"
-                    : "border-slate-200 bg-white hover:border-green-300 hover:shadow-md"
+                    ? "border-green-500 bg-green-50 dark:bg-green-900/20 shadow-lg"
+                    : "border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 hover:border-green-300 dark:hover:border-green-500 hover:shadow-md"
                 }`}
               >
                 <div className="flex flex-col items-center text-center">
                   <div
                     className={`mb-4 rounded-full p-4 ${
                       selectedMethod === "phone"
-                        ? "bg-green-100"
-                        : "bg-slate-100"
+                        ? "bg-green-100 dark:bg-green-900/40"
+                        : "bg-slate-100 dark:bg-slate-700"
                     }`}
                   >
                     <WhatsAppIcon
@@ -222,10 +222,10 @@ export default function ContactSection() {
                       }`}
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                     {t("contact.phone_title")}
                   </h3>
-                  <p className="text-sm text-slate-600 mb-4">
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                     {t("contact.phone_desc")}
                   </p>
                   {selectedMethod === "phone" && (
@@ -234,8 +234,8 @@ export default function ContactSection() {
                       animate={{ opacity: 1, height: "auto" }}
                       className="w-full"
                     >
-                      <div className="mt-4 pt-4 border-t border-green-200">
-                        <p className="text-sm font-medium text-slate-700 mb-3">
+                      <div className="mt-4 pt-4 border-t border-green-200 dark:border-green-800">
+                        <p className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
                           {t("contact.phone_number")}
                         </p>
                         <div className="flex items-center gap-2">
@@ -264,7 +264,7 @@ export default function ContactSection() {
                               e.stopPropagation();
                               handleCopy(phone);
                             }}
-                            className="px-4 py-3 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+                            className="px-4 py-3 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg transition-colors"
                             title={(() => {
                               const copyText = t("contact.copy");
                               return typeof copyText === "string"
@@ -277,13 +277,13 @@ export default function ContactSection() {
                             {copied ? (
                               <Check className="h-4 w-4 text-green-600" />
                             ) : (
-                              <span className="text-sm font-medium text-slate-700">
+                              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                                 {t("contact.copy")}
                               </span>
                             )}
                           </button>
                         </div>
-                        <p className="text-xs text-slate-500 mt-3" dir="ltr">
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-3" dir="ltr">
                           {phone}
                         </p>
                       </div>
@@ -302,11 +302,11 @@ export default function ContactSection() {
             viewport={{ once: true }}
             className="mt-12 text-center"
           >
-            <div className="inline-block bg-white rounded-2xl border border-slate-200 px-8 py-6 shadow-sm">
-              <h4 className="text-sm font-semibold text-slate-900 mb-2">
+            <div className="inline-block bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-600 px-8 py-6 shadow-sm">
+              <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-2">
                 {t("contact.visit_us")}
               </h4>
-              <p className="text-sm text-slate-600">{t("footer.address")}</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">{t("footer.address")}</p>
             </div>
           </motion.div>
         </div>

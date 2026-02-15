@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
 @import "tailwindcss";
 
+/* Tailwind v4: use .dark class for dark: variant (instead of prefers-color-scheme) */
+@custom-variant dark (&:is(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -25,14 +28,24 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Dark mode: system preference */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --background: #020617;
     --foreground: #e5e7eb;
     --surface: #020617;
     --border: #1e293b;
     --muted: #94a3b8;
   }
+}
+
+/* Dark mode: user preference (explicit dark class) */
+html.dark {
+  --background: #020617;
+  --foreground: #e5e7eb;
+  --surface: #0f172a;
+  --border: #334155;
+  --muted: #94a3b8;
 }
 
 * {
@@ -43,6 +56,11 @@ html, body {
   font-family: var(--font-geist-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html.dark body {
+  background-color: #0f172a;
+  color: #e2e8f0;
 }
 
 /* When Arabic is active we prefer the Cairo font and RTL layout */

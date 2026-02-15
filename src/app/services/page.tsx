@@ -21,7 +21,7 @@ export default function ServicesPage() {
     return (
       <>
         <Header />
-        <div className="flex min-h-[400px] items-center justify-center">
+        <div className="flex min-h-[400px] items-center justify-center bg-white dark:bg-slate-900">
           <LoadingSpinner size="lg" />
         </div>
         <Footer />
@@ -33,7 +33,7 @@ export default function ServicesPage() {
     return (
       <>
         <Header />
-        <div className="flex min-h-[400px] items-center justify-center">
+        <div className="flex min-h-[400px] items-center justify-center bg-white dark:bg-slate-900">
           <ErrorMessage message={error} onRetry={refetch} />
         </div>
         <Footer />
@@ -60,13 +60,13 @@ export default function ServicesPage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white dark:bg-slate-900">
         <PageHero
           title={s("services.title")}
           description={s("services.description")}
         />
 
-        <section className="py-12 bg-slate-50">
+        <section className="py-12 bg-slate-50 dark:bg-slate-800/50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               <StatCard
@@ -101,28 +101,28 @@ export default function ServicesPage() {
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">{s("services.chart_title")}</h3>
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                <h3 className="mb-4 text-lg font-bold text-slate-900 dark:text-white">{s("services.chart_title")}</h3>
                 <PieChart data={chartData} height={300} />
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">{s("services.metrics_title")}</h3>
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                <h3 className="mb-4 text-lg font-bold text-slate-900 dark:text-white">{s("services.metrics_title")}</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{s("services.metric_total")}</span>
-                    <span className="text-xl font-bold text-slate-900">{stats.total.toLocaleString()}</span>
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{s("services.metric_total")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">{stats.total.toLocaleString()}</span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{s("services.metric_available")}</span>
-                    <span className="text-xl font-bold text-slate-900">{stats.available.toLocaleString()}</span>
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{s("services.metric_available")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">{stats.available.toLocaleString()}</span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{s("services.metric_unavailable")}</span>
-                    <span className="text-xl font-bold text-slate-900">{stats.unavailable.toLocaleString()}</span>
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{s("services.metric_unavailable")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">{stats.unavailable.toLocaleString()}</span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{s("services.metric_availability_rate")}</span>
-                    <span className="text-xl font-bold text-slate-900">{stats.availabilityRate.toFixed(1)}%</span>
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{s("services.metric_availability_rate")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">{stats.availabilityRate.toFixed(1)}%</span>
                   </div>
                 </div>
               </div>

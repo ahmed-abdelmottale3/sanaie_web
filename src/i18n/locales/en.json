@@ -10,7 +10,9 @@
     "more": "More"
   },
   "header": {
-    "platform_name": "Sanaie Platform"
+    "platform_name": "Sanaie Platform",
+    "change_theme": "Change theme",
+    "change_language": "Change language"
   },
   "faq": {
     "title": "Frequently Asked Questions",

@@ -84,7 +84,7 @@ export default function StatsSection({ stats, loading = false }: StatsSectionPro
   ];
 
   return (
-    <section id="stats" className="py-20 bg-slate-50">
+    <section id="stats" className="py-20 bg-slate-50 dark:bg-slate-800/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -93,10 +93,10 @@ export default function StatsSection({ stats, loading = false }: StatsSectionPro
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl md:text-5xl">
             {t("stats.title")}
           </h2>
-          <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             {t("stats.subtitle")}
           </p>
         </motion.div>
@@ -112,18 +112,18 @@ export default function StatsSection({ stats, loading = false }: StatsSectionPro
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:scale-105 cursor-pointer"
+                className="rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-6 shadow-sm transition-all hover:shadow-md hover:scale-105 cursor-pointer"
               >
-                <div className={`inline-flex rounded-lg ${item.bgColor} p-3 mb-4`}>
+                <div className={`inline-flex rounded-lg ${item.bgColor} dark:bg-slate-700 p-3 mb-4`}>
                   <Icon className={`h-6 w-6 ${item.color}`} />
                 </div>
-                <div className="text-3xl font-extrabold text-slate-900 mb-1">
+                <div className="text-3xl font-extrabold text-slate-900 dark:text-white mb-1">
                   <CounterAnimation value={item.value} />
                 </div>
-                <div className="text-base font-semibold text-slate-900 mb-2">
+                <div className="text-base font-semibold text-slate-900 dark:text-white mb-2">
                   {t(item.labelKey)}
                 </div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-slate-600 dark:text-slate-400">
                   {t(item.descKey)}
                 </div>
               </motion.a>

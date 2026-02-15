@@ -8,6 +8,7 @@ import { ChevronLeft, ChevronRight, Megaphone } from "lucide-react";
 import LoadingSpinner from "../analytics/LoadingSpinner";
 import ErrorMessage from "../analytics/ErrorMessage";
 import { useI18n } from "../../i18n/I18nProvider";
+import type { Ad } from "../../types/ad";
 
 export default function AdsCarousel() {
   const { t } = useI18n();
@@ -15,13 +16,20 @@ export default function AdsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
+  // Normalize ads to array (API may return { ads: [...] } instead of array)
+  const adsArray: Ad[] = Array.isArray(ads)
+    ? ads
+    : (ads && typeof ads === 'object' && 'ads' in ads && Array.isArray((ads as { ads: unknown }).ads))
+      ? (ads as { ads: Ad[] }).ads
+      : [];
+
   // Filter only active ads
-  const activeAds = ads?.filter(ad => {
+  const activeAds = adsArray.filter(ad => {
     const now = new Date();
     const startDate = new Date(ad.startDate);
     const endDate = new Date(ad.endDate);
     return ad.isActive && startDate <= now && endDate >= now;
-  }) || [];
+  });
 
   // Auto-play carousel
   useEffect(() => {
@@ -51,7 +59,7 @@ export default function AdsCarousel() {
 
   if (loading) {
     return (
-      <section className="py-12 bg-slate-50">
+      <section className="py-12 bg-slate-50 dark:bg-slate-800/50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center py-12">
             <LoadingSpinner size="lg" />
@@ -63,7 +71,7 @@ export default function AdsCarousel() {
 
   if (error) {
     return (
-      <section className="py-12 bg-slate-50">
+      <section className="py-12 bg-slate-50 dark:bg-slate-800/50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center py-12">
             <ErrorMessage message={error} onRetry={refetch} />
@@ -83,7 +91,7 @@ export default function AdsCarousel() {
     : `${process.env.NEXT_PUBLIC_API_BASE_URL?.replace('/api', '') || ''}${currentAd.imageUrl}`;
 
   return (
-    <section className="py-12 bg-slate-50">
+    <section className="py-12 bg-slate-50 dark:bg-slate-800/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -97,7 +105,7 @@ export default function AdsCarousel() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-3xl font-extrabold text-slate-900 sm:text-4xl"
+            className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl"
           >
             {t("ads.title")}
           </motion.h2>
@@ -106,7 +114,7 @@ export default function AdsCarousel() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            className="mt-4 text-lg text-slate-600"
+            className="mt-4 text-lg text-slate-600 dark:text-slate-400"
           >
             {t("ads.subtitle")}
           </motion.p>
@@ -114,7 +122,7 @@ export default function AdsCarousel() {
 
         <div className="relative">
           {/* Carousel Container */}
-          <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg">
+          <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-lg">
             <AnimatePresence mode="wait">
               <Link
                 href={`/ads/${activeAds[currentIndex]._id}`}
@@ -129,7 +137,7 @@ export default function AdsCarousel() {
                   className="relative cursor-pointer"
                 >
                 {/* Ad Image */}
-                <div className="relative h-64 sm:h-80 md:h-96 bg-slate-200">
+                <div className="relative h-64 sm:h-80 md:h-96 bg-slate-200 dark:bg-slate-700">
                   {currentAd.imageUrl ? (
                     <img
                       src={imageUrl}
@@ -141,7 +149,7 @@ export default function AdsCarousel() {
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <Megaphone className="h-16 w-16 text-slate-400" />
+                      <Megaphone className="h-16 w-16 text-slate-400 dark:text-slate-500" />
                     </div>
                   )}
                   
@@ -200,8 +208,8 @@ export default function AdsCarousel() {
           </div>
 
           {/* Ad Counter */}
-          {activeAds.length > 1 && (
-            <div className="mt-4 text-center text-sm text-slate-600">
+            {activeAds.length > 1 && (
+            <div className="mt-4 text-center text-sm text-slate-600 dark:text-slate-400">
               {currentIndex + 1} / {activeAds.length}
             </div>
           )}

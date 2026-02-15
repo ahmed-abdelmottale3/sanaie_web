@@ -17,7 +17,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="border-t border-slate-200 bg-white">
+    <footer className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
@@ -27,43 +27,43 @@ export default function Footer() {
                 alt="Sanaie Platform"
                 className="h-8 w-8"
               />
-              <span className="text-lg font-bold text-slate-900">Sanaie Platform</span>
+              <span className="text-lg font-bold text-slate-900 dark:text-white">Sanaie Platform</span>
             </div>
-            <p className="text-sm text-slate-600 mb-6">
+            <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">
               {t("footer.tagline")}
             </p>
             
             {/* Contact Information */}
             <div className="space-y-3">
-              <h3 className="text-sm font-semibold text-slate-900 mb-3">{t("footer.contact_us")}</h3>
-              <a href={`mailto:${t("footer.email")}`} className="flex items-start gap-3 text-sm text-slate-600 hover:text-red-600 transition-colors group">
+              <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-3">{t("footer.contact_us")}</h3>
+              <a href={`mailto:${t("footer.email")}`} className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400 hover:text-red-600 transition-colors group">
                 <Mail className="h-4 w-4 mt-0.5 flex-shrink-0 group-hover:text-red-600" />
                 <span>{t("footer.email")}</span>
               </a>
-              <a href={`tel:${t("footer.phone")}`} className="flex items-start gap-3 text-sm text-slate-600 hover:text-red-600 transition-colors group">
+              <a href={`tel:${t("footer.phone")}`} className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400 hover:text-red-600 transition-colors group">
                 <Phone className="h-4 w-4 mt-0.5 flex-shrink-0 group-hover:text-red-600" />
                 <span dir="ltr">{t("footer.phone")}</span>
               </a>
-              <div className="flex items-start gap-3 text-sm text-slate-600">
+              <div className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <span>{t("footer.address")}</span>
               </div>
             </div>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 mb-4">{t("footer.platform")}</h3>
-            <ul className="space-y-2 text-sm text-slate-600">
-              <li><a href="#stats" className="hover:text-slate-900 transition-colors">{t("footer.statistics")}</a></li>
-              <li><a href="#features" className="hover:text-slate-900 transition-colors">{t("footer.features")}</a></li>
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-4">{t("footer.platform")}</h3>
+            <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+              <li><a href="#stats" className="hover:text-slate-900 dark:hover:text-white transition-colors">{t("footer.statistics")}</a></li>
+              <li><a href="#features" className="hover:text-slate-900 dark:hover:text-white transition-colors">{t("footer.features")}</a></li>
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 mb-4">{t("footer.legal")}</h3>
-            <ul className="space-y-2 text-sm text-slate-600">
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-4">{t("footer.legal")}</h3>
+            <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
               <li>
                 <button
                   onClick={() => setShowPrivacy(true)}
-                  className="text-slate-600 hover:text-slate-900 transition-colors"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
                 >
                   {t("footer.privacy_policy")}
                 </button>
@@ -71,7 +71,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-8 border-t border-slate-200 pt-8 text-center text-sm text-slate-600">
+        <div className="mt-8 border-t border-slate-200 dark:border-slate-700 pt-8 text-center text-sm text-slate-600 dark:text-slate-400">
           <p>&copy; {new Date().getFullYear()} Sanaie Platform. {t("footer.copyright")}</p>
         </div>
       </div>
@@ -85,16 +85,16 @@ export default function Footer() {
             role="dialog"
             aria-modal="true"
             aria-label={t("footer.privacy_policy") as string}
-            className="relative max-w-3xl w-full mx-4 bg-white rounded-lg shadow-lg overflow-auto max-h-[80vh] p-6"
+            className="relative max-w-3xl w-full mx-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-auto max-h-[80vh] p-6"
           >
             <button
               onClick={() => setShowPrivacy(false)}
-              className="absolute top-3 right-3 text-slate-600 hover:text-slate-900"
+              className="absolute top-3 right-3 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               aria-label="Close"
             >
               Close
             </button>
-            <div className="prose prose-sm text-slate-700">
+            <div className="prose prose-sm text-slate-700 dark:text-slate-300 max-w-none [&_h2]:dark:text-white [&_p]:dark:text-slate-300">
               {(() => {
                 const getString = (v: string | string[]) =>
                   Array.isArray(v) ? v.join("\n\n") : v;

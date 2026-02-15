@@ -13,7 +13,7 @@ export default function LoadMoreButton({ onClick, isLoading = false, disabled = 
       <button
         onClick={onClick}
         disabled={disabled || isLoading}
-        className={`inline-flex items-center px-4 py-2 border border-gray-300 rounded-md bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm`}
+        className={`inline-flex items-center px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-800 text-sm font-medium text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm`}
         aria-label={label}
       >
         {isLoading ? (

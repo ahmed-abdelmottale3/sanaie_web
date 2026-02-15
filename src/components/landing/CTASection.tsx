@@ -8,7 +8,7 @@ export default function CTASection() {
   const { t } = useI18n();
 
   return (
-    <section className="py-20 bg-red-600 text-white">
+    <section className="py-20 bg-red-600 dark:bg-red-800 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

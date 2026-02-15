@@ -29,7 +29,7 @@ export default function AdsPage() {
     return (
       <>
         <Header />
-        <div className="flex min-h-[400px] items-center justify-center">
+        <div className="flex min-h-[400px] items-center justify-center bg-white dark:bg-slate-900">
           <LoadingSpinner size="lg" />
         </div>
         <Footer />
@@ -41,7 +41,7 @@ export default function AdsPage() {
     return (
       <>
         <Header />
-        <div className="flex min-h-[400px] items-center justify-center">
+        <div className="flex min-h-[400px] items-center justify-center bg-white dark:bg-slate-900">
           <ErrorMessage message={error} onRetry={refetch} />
         </div>
         <Footer />
@@ -67,13 +67,13 @@ export default function AdsPage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white dark:bg-slate-900">
         <PageHero
           title={getString("ads.title")}
           description={getString("ads.description")}
         />
 
-        <section className="py-12 bg-slate-50">
+        <section className="py-12 bg-slate-50 dark:bg-slate-800/50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-6">
               <StatCard
@@ -121,28 +121,28 @@ export default function AdsPage() {
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">{t("ads.chart_title")}</h3>
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                <h3 className="mb-4 text-lg font-bold text-slate-900 dark:text-white">{t("ads.chart_title")}</h3>
                 <PieChart data={chartData} height={300} />
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-lg font-bold text-slate-900">{t("ads.engagement_title")}</h3>
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                <h3 className="mb-4 text-lg font-bold text-slate-900 dark:text-white">{t("ads.engagement_title")}</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("ads.metric_avg_clicks")}</span>
-                    <span className="text-xl font-bold text-slate-900">{stats.averageClicks.toLocaleString()}</span>
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{t("ads.metric_avg_clicks")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">{stats.averageClicks.toLocaleString()}</span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("ads.metric_avg_views")}</span>
-                    <span className="text-xl font-bold text-slate-900">{stats.averageViews.toLocaleString()}</span>
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{t("ads.metric_avg_views")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">{stats.averageViews.toLocaleString()}</span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("ads.metric_ctr")}</span>
-                    <span className="text-xl font-bold text-slate-900">{clickThroughRate}%</span>
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{t("ads.metric_ctr")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">{clickThroughRate}%</span>
                   </div>
-                  <div className="flex items-center justify-between rounded-lg bg-slate-50 p-4">
-                    <span className="text-sm font-semibold text-slate-600">{t("ads.metric_total_engagement")}</span>
-                    <span className="text-xl font-bold text-slate-900">
+                  <div className="flex items-center justify-between rounded-lg bg-slate-50 dark:bg-slate-700 p-4">
+                    <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">{t("ads.metric_total_engagement")}</span>
+                    <span className="text-xl font-bold text-slate-900 dark:text-white">
                       {(stats.totalViews + stats.totalClicks).toLocaleString()}
                     </span>
                   </div>
@@ -152,7 +152,7 @@ export default function AdsPage() {
 
             {/* Ads Display Section */}
             <div className="mt-12">
-              <h2 className="text-2xl font-extrabold text-slate-900 mb-6">{t("ads.all_ads_title")}</h2>
+              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white mb-6">{t("ads.all_ads_title")}</h2>
               
               {adsLoading && (
                 <div className="flex items-center justify-center py-12">
@@ -170,8 +170,8 @@ export default function AdsPage() {
                 <>
                   {ads.length === 0 ? (
                     <div className="text-center py-12">
-                      <Megaphone className="mx-auto h-12 w-12 text-slate-400 mb-4" />
-                      <p className="text-lg font-semibold text-slate-600">{t("ads.no_ads_found")}</p>
+                      <Megaphone className="mx-auto h-12 w-12 text-slate-400 dark:text-slate-500 mb-4" />
+                      <p className="text-lg font-semibold text-slate-600 dark:text-slate-400">{t("ads.no_ads_found")}</p>
                     </div>
                   ) : (
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -194,9 +194,9 @@ export default function AdsPage() {
                               initial={{ opacity: 0, y: 20 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ duration: 0.6, delay: index * 0.1 }}
-                              className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer"
+                              className="rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer"
                             >
-                            <div className="relative h-48 bg-slate-100">
+                            <div className="relative h-48 bg-slate-100 dark:bg-slate-700">
                               {ad.imageUrl ? (
                                 <img
                                   src={imageUrl}
@@ -207,42 +207,42 @@ export default function AdsPage() {
                                   }}
                                 />
                               ) : (
-                                <div className="w-full h-full flex items-center justify-center bg-slate-200">
-                                  <Megaphone className="h-12 w-12 text-slate-400" />
+                                <div className="w-full h-full flex items-center justify-center bg-slate-200 dark:bg-slate-600">
+                                  <Megaphone className="h-12 w-12 text-slate-400 dark:text-slate-500" />
                                 </div>
                               )}
                               <div className={`absolute top-2 right-2 px-2 py-1 rounded-full text-xs font-semibold ${
                                 isActive 
-                                  ? 'bg-green-100 text-green-700' 
-                                  : 'bg-red-100 text-red-700'
+                                  ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400' 
+                                  : 'bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400'
                               }`}>
                                 {isActive ? t("ads.active") : t("ads.inactive")}
                               </div>
                             </div>
                             
                             <div className="p-4">
-                              <h3 className="text-lg font-bold text-slate-900 mb-1 line-clamp-2">
+                              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 line-clamp-2">
                                 {ad.title}
                               </h3>
                               
                               {ad.description && (
-                                <p className="text-sm font-medium text-slate-500 mb-4 line-clamp-2">
+                                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">
                                   {ad.description}
                                 </p>
                               )}
 
                               <div className="space-y-2 mb-4">
-                                <div className="flex items-center gap-2 text-xs text-slate-500">
+                                <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                                   <Users className="h-4 w-4" />
                                   <span>{t("ads.target")}: {ad.targetUserType}</span>
                                 </div>
-                                <div className="flex items-center gap-2 text-xs text-slate-500">
+                                <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                                   <Calendar className="h-4 w-4" />
                                   <span>
                                     {new Date(ad.startDate).toLocaleDateString()} - {new Date(ad.endDate).toLocaleDateString()}
                                   </span>
                                 </div>
-                                <div className="flex items-center gap-4 text-xs text-slate-500">
+                                <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
                                   <div className="flex items-center gap-1">
                                     <Eye className="h-4 w-4" />
                                     <span>{ad.views.toLocaleString()} {t("ads.views")}</span>

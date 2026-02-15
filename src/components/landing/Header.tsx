@@ -3,9 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 import { useI18n } from "../../i18n/I18nProvider";
 import { usePathname } from "next/navigation";
-import { BarChart3, Users, Briefcase, ShoppingBag, FileText, Megaphone, FolderTree, Menu, X, ChevronDown, Home, Globe } from "lucide-react";
+import { BarChart3, Users, Briefcase, ShoppingBag, FileText, Megaphone, FolderTree, Menu, X, ChevronDown, Home, Globe, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import RippleLink from "../ui/RippleLink";
+import { useTheme } from "../../contexts/ThemeContext";
 
 const primaryNav = [
   { href: "/", key: "home", icon: Home },
@@ -22,6 +23,7 @@ const moreNav = [
 
 export default function Header() {
   const { locale, setLocale, t } = useI18n();
+  const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
@@ -62,21 +64,23 @@ export default function Header() {
     setIsLangOpen(false);
   };
 
+  const toggleTheme = () => setTheme(resolvedTheme === "dark" ? "light" : "dark");
+
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm shadow-sm">
+    <header className="sticky top-0 z-50 border-b border-slate-200 dark:border-slate-700 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-            <RippleLink href="/" className="flex items-center gap-2">
+        <div className="flex h-16 items-center justify-between gap-2">
+            <RippleLink href="/" className="flex items-center gap-2 shrink-0 min-w-0">
             <img
               src="/logo.png"
               alt="Sanaie Platform Logo"
               className="h-8 w-auto rounded-full"
               />
-            <span className="text-lg font-bold text-slate-900">{t('header.platform_name')}</span>
+            <span className="text-lg font-bold text-slate-900 dark:text-white truncate">{t('header.platform_name')}</span>
           </RippleLink>
           
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1 flex-1 justify-center">
             {primaryNav.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
@@ -87,7 +91,7 @@ export default function Header() {
                   className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                     isActive
                       ? "bg-red-600 text-white"
-                      : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
                   }`}
                 >
                   <Icon className="h-4 w-4" />
@@ -100,7 +104,7 @@ export default function Header() {
             <div className="relative" ref={moreRef}>
               <button
                 onClick={() => setIsMoreOpen((s) => !s)}
-                className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-slate-600 hover:bg-slate-100 hover:text-slate-900`}
+                className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white`}
                 aria-expanded={isMoreOpen}
               >
                 <ChevronDown className="h-4 w-4" />
@@ -114,7 +118,7 @@ export default function Header() {
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.18 }}
-                    className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-slate-200 py-2 z-50 overflow-hidden"
+                    className="absolute right-0 mt-2 w-44 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-600 py-2 z-50 overflow-hidden"
                   >
                       {moreNav.map((item) => {
                       const Icon = item.icon;
@@ -125,8 +129,8 @@ export default function Header() {
                           href={item.href}
                           className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors ${
                             isActive
-                              ? "bg-red-50 text-red-600 border-r-2 border-red-600"
-                              : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                              ? "bg-red-50 dark:bg-red-900/20 text-red-600 border-r-2 border-red-600"
+                              : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white"
                           }`}
                           onClick={() => setIsMoreOpen(false)}
                         >
@@ -141,11 +145,13 @@ export default function Header() {
             </div>
           </nav>
 
+          {/* Right side: Desktop = empty spacer, Mobile = menu + theme + lang */}
+          <div className="flex items-center gap-1 shrink-0">
           {/* Mobile Menu Button */}
           <div className="relative lg:hidden" ref={menuRef}>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
@@ -163,7 +169,7 @@ export default function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-slate-200 py-2 z-50 modal-scrollbar max-h-64 overflow-y-auto"
+                  className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-600 py-2 z-50 modal-scrollbar max-h-64 overflow-y-auto"
                 >
                   <nav className="flex flex-col">
                     {primaryNav.map((item) => {
@@ -175,8 +181,8 @@ export default function Header() {
                           href={item.href}
                           className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors ${
                             isActive
-                              ? "bg-red-50 text-red-600 border-r-2 border-red-600"
-                              : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                              ? "bg-red-50 dark:bg-red-900/20 text-red-600 border-r-2 border-red-600"
+                              : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white"
                           }`}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -187,16 +193,16 @@ export default function Header() {
                     })}
 
                     {/* Mobile 'More' collapsible */}
-                    <div className="border-t border-slate-100 mt-2 pt-2">
+                    <div className="border-t border-slate-100 dark:border-slate-700 mt-2 pt-2">
                       <button
                         onClick={() => setIsMobileMoreOpen((s) => !s)}
-                        className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                        className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
                       >
                         <span className="flex items-center gap-3">
                           <ChevronDown className="h-4 w-4 rotate-90" />
                           More
                         </span>
-                        <span className="text-slate-500">{isMobileMoreOpen ? "Hide" : "Show"}</span>
+                        <span className="text-slate-500 dark:text-slate-400">{isMobileMoreOpen ? "Hide" : "Show"}</span>
                       </button>
 
                       <AnimatePresence>
@@ -215,16 +221,16 @@ export default function Header() {
                                 <RippleLink
                                   key={item.href}
                                   href={item.href}
-                                  className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors ${
-                                    isActive
-                                      ? "bg-red-50 text-red-600 border-r-2 border-red-600"
-                                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                                  }`}
-                                  onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                  <Icon className={`h-4 w-4 ${isActive ? "text-red-600" : ""}`} />
-                                  <span>{t(`nav.${item.key}`)}</span>
-                                </RippleLink>
+                      className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors ${
+                            isActive
+                              ? "bg-red-50 dark:bg-red-900/20 text-red-600 border-r-2 border-red-600"
+                              : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          <Icon className={`h-4 w-4 ${isActive ? "text-red-600" : ""}`} />
+                          <span>{t(`nav.${item.key}`)}</span>
+                        </RippleLink>
                               );
                             })}
                           </motion.div>
@@ -237,15 +243,27 @@ export default function Header() {
             </AnimatePresence>
           </div>
 
-            {/* Language toggle (far right) */}
-            <div className="ml-3 relative" ref={langRef}>
+            {/* Theme toggle - visible on all screens */}
+            <button
+              onClick={toggleTheme}
+              aria-label={String(t('header.change_theme'))}
+              className="inline-flex items-center justify-center p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            >
+              {resolvedTheme === "dark" ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
+            </button>
+
+            {/* Language toggle */}
+            <div className="relative" ref={langRef}>
               <button
                 onClick={() => setIsLangOpen((s) => !s)}
-                aria-label="Toggle language menu"
-                className="inline-flex items-center px-3 py-2 rounded-md text-sm font-medium bg-white hover:bg-slate-50"
+                aria-label={String(t('header.change_language'))}
+                className="inline-flex items-center justify-center p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
-                <span className="sr-only">Change language</span>
-                <Globe className="h-5 w-5 text-slate-700" />
+                <Globe className="h-5 w-5" />
               </button>
 
               <AnimatePresence>
@@ -255,17 +273,17 @@ export default function Header() {
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.18 }}
-                    className="absolute right-0 mt-2 w-28 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-50 overflow-hidden"
+                    className="absolute right-0 mt-2 w-28 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-600 py-1 z-50 overflow-hidden"
                   >
                     <button
                       onClick={() => setLanguage('en')}
-                      className={`w-full text-left px-3 py-2 text-sm ${locale === 'en' ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-slate-50'}`}
+                      className={`w-full text-left px-3 py-2 text-sm ${locale === 'en' ? 'bg-red-50 dark:bg-red-900/20 text-red-600' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'}`}
                     >
                       EN
                     </button>
                     <button
                       onClick={() => setLanguage('ar')}
-                      className={`w-full text-left px-3 py-2 text-sm ${locale === 'ar' ? 'bg-red-50 text-red-600' : 'text-slate-700 hover:bg-slate-50'}`}
+                      className={`w-full text-left px-3 py-2 text-sm ${locale === 'ar' ? 'bg-red-50 dark:bg-red-900/20 text-red-600' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'}`}
                     >
                       AR
                     </button>
@@ -273,6 +291,7 @@ export default function Header() {
                 )}
               </AnimatePresence>
             </div>
+          </div>
         </div>
       </div>
     </header>

@@ -33,7 +33,7 @@ export default function FAQSection() {
   const loadMore = () => setVisibleCount((c) => Math.min(c + PAGE_SIZE, faqs.length));
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-slate-900">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -47,7 +47,7 @@ export default function FAQSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-gray-900 sm:text-4xl"
+            className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
           >
             {t("faq.title")}
           </motion.h2>
@@ -56,7 +56,7 @@ export default function FAQSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto"
+            className="mt-4 text-lg text-gray-600 dark:text-slate-400 max-w-2xl mx-auto"
           >
             {t("faq.subtitle")}
           </motion.p>
@@ -70,20 +70,20 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-300"
+              className="border border-gray-200 dark:border-slate-600 rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-300 bg-white dark:bg-slate-800"
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
+                className="w-full px-6 py-4 text-left bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors duration-200 flex items-center justify-between"
               >
-                  <span className="font-semibold text-gray-900 text-lg">
+                  <span className="font-semibold text-gray-900 dark:text-white text-lg">
                   {t(`faq.${key}`)}
                 </span>
                 <motion.div
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <ChevronDown className="w-5 h-5 text-gray-500" />
+                  <ChevronDown className="w-5 h-5 text-gray-500 dark:text-slate-400" />
                 </motion.div>
               </button>
 
@@ -96,7 +96,7 @@ export default function FAQSection() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 pb-4 text-gray-700 leading-relaxed">
+                    <div className="px-6 pb-4 text-gray-700 dark:text-slate-300 leading-relaxed">
                       {t(`faq.${key}_answer`)}
                     </div>
                   </motion.div>

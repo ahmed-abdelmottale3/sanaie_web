@@ -24,13 +24,13 @@ export default function HomePage() {
 
       {/* Loading and error states - shown while data is being fetched */}
       {loading && !stats && (
-        <div className="flex min-h-screen items-center justify-center">
+        <div className="flex min-h-screen items-center justify-center bg-white dark:bg-slate-900">
           <LoadingSpinner size="lg" />
         </div>
       )}
 
       {error && (
-        <div className="flex min-h-screen items-center justify-center">
+        <div className="flex min-h-screen items-center justify-center bg-white dark:bg-slate-900">
           <ErrorMessage message={error} onRetry={refetch} />
         </div>
       )}

@@ -26,21 +26,21 @@ export default function StatCard({
 }: StatCardProps) {
   return (
     <div
-      className={`rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-md ${className}`}
+      className={`rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-5 shadow-sm transition-all duration-300 hover:shadow-md ${className}`}
     >
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <p className="text-xs font-semibold text-slate-500">{title}</p>
+          <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">{title}</p>
           <div className="mt-2">
             <CounterAnimation
               value={value}
               prefix={prefix}
               suffix={suffix}
-              className="text-2xl font-bold text-slate-900"
+              className="text-2xl font-bold text-slate-900 dark:text-white"
             />
           </div>
         </div>
-        <div className={`rounded-lg ${bgColor} p-2.5 ${iconColor}`}>
+        <div className={`rounded-lg ${bgColor} dark:bg-slate-700 p-2.5 ${iconColor}`}>
           <Icon className="h-5 w-5" />
         </div>
       </div>
