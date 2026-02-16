@@ -109,8 +109,8 @@ export default function ContactSection() {
                     <Mail
                       className={`h-8 w-8 ${
                         selectedMethod === "email"
-                          ? "text-red-600"
-                          : "text-slate-600"
+                          ? "text-red-600 dark:text-red-300"
+                          : "text-slate-600 dark:text-slate-300"
                       }`}
                     />
                   </div>
@@ -217,8 +217,8 @@ export default function ContactSection() {
                     <WhatsAppIcon
                       className={`h-8 w-8 ${
                         selectedMethod === "phone"
-                          ? "text-green-600"
-                          : "text-slate-600"
+                          ? "text-green-600 dark:text-green-300"
+                          : "text-slate-600 dark:text-slate-300"
                       }`}
                     />
                   </div>
@@ -256,7 +256,7 @@ export default function ContactSection() {
                             })()}
                             className="flex-1 inline-flex items-center justify-center gap-2 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-medium"
                           >
-                            <WhatsAppIcon className="h-4 w-4" />
+                            <WhatsAppIcon className="h-4 w-4 text-white dark:text-white" />
                             {t("contact.whatsapp_now")}
                           </a>
                           <button

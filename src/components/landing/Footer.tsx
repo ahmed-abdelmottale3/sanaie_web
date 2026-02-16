@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useI18n } from "../../i18n/I18nProvider";
 import { Mail, Phone, MapPin } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   const { t } = useI18n();
@@ -54,8 +55,8 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-4">{t("footer.platform")}</h3>
             <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-              <li><a href="#stats" className="hover:text-slate-900 dark:hover:text-white transition-colors">{t("footer.statistics")}</a></li>
-              <li><a href="#features" className="hover:text-slate-900 dark:hover:text-white transition-colors">{t("footer.features")}</a></li>
+              <li><Link href="/services" className="hover:text-slate-900 dark:hover:text-white transition-colors">{t("footer.statistics")}</Link></li>
+              <li><Link href="/categories" className="hover:text-slate-900 dark:hover:text-white transition-colors">{t("footer.features")}</Link></li>
             </ul>
           </div>
           <div>
