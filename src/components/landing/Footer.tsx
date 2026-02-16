@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useI18n } from "../../i18n/I18nProvider";
 import { Mail, Phone, MapPin } from "lucide-react";
 
@@ -75,17 +76,17 @@ export default function Footer() {
           <p>&copy; {new Date().getFullYear()} Sanaie Platform. {t("footer.copyright")}</p>
         </div>
       </div>
-      {showPrivacy && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+      {showPrivacy && typeof document !== "undefined" && createPortal(
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center">
           <div
-            className="absolute inset-0 bg-black/50"
+            className="absolute inset-0 bg-black/50 z-[9998]"
             onClick={() => setShowPrivacy(false)}
           />
           <div
             role="dialog"
             aria-modal="true"
             aria-label={t("footer.privacy_policy") as string}
-            className="relative max-w-3xl w-full mx-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-auto max-h-[80vh] p-6"
+            className="relative z-[10000] max-w-3xl w-full mx-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-auto max-h-[80vh] p-6"
           >
             <button
               onClick={() => setShowPrivacy(false)}
@@ -111,7 +112,8 @@ export default function Footer() {
               })()}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </footer>
   );
