@@ -63,7 +63,7 @@ export default function MobileAppSection() {
               className={`mt-8 ${locale === 'ar' ? 'text-ar-right' : ''}`}
             >
               <a
-                href="https://play.google.com/store/apps"
+                href="https://play.google.com/store/apps/details?id=com.sanaieeafaq.sanaiee&pcampaignid=web_share"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl"
