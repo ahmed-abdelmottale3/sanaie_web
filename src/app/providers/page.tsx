@@ -12,6 +12,7 @@ import BarChart from "../../components/analytics/charts/BarChart";
 import { Briefcase, UserCheck, UserX, Trash2, Ban } from "lucide-react";
 import { motion } from "framer-motion";
 import { useI18n } from "../../i18n/I18nProvider";
+import ProviderMapByCity from "../../components/providers/ProviderMapByCity";
 
 export default function ProvidersPage() {
   const { data, loading, error, refetch } = useProviderStatistics();
@@ -128,6 +129,12 @@ export default function ProvidersPage() {
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="mt-12">
+              <h3 className="mb-4 text-lg font-bold text-slate-900 dark:text-white text-center">
+                {t("providers.map_title") as string}
+              </h3>
+              <ProviderMapByCity cityKey="cairo" />
             </div>
           </div>
         </section>

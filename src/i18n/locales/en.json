@@ -165,7 +165,10 @@
     "key_metrics": "Key Metrics",
     "active_rate": "Active Rate",
     "inactive_rate": "Inactive Rate",
-    "blacklist_rate": "Blacklist Rate"
+    "blacklist_rate": "Blacklist Rate",
+    "map_title": "Service providers distribution on the map",
+    "map_select_city": "Select area",
+    "map_no_in_radius": "Provider locations were loaded but none fall inside this radius for the selected area. Try another area."
   },
   "categories": {
     "title": "Category Statistics",
